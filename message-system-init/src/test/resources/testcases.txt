@@ -1,0 +1,2 @@
+Find all inbox messages:
+get all messages from the given recipient and exclude all messages that have the recipientDeletedFlag true.

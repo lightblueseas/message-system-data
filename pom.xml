@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.alpharogroup</groupId>
+		<artifactId>mvn-persistence-parent</artifactId>
+		<version>2.2.0</version>
+		<relativePath></relativePath>
+	</parent>
+
+	<artifactId>message-system-data</artifactId>
+	<packaging>pom</packaging>
+	<version>3.1.0</version>
+	<inceptionYear>2015</inceptionYear>
+
+	<name>${project.artifactId}</name>
+
+	<description>
+		Parent project that holds module projects for the persistence of address data.
+	</description>
+
+	<url>https://github.com/lightblueseas/message-system-data</url>
+
+	<scm>
+		<connection>scm:git:git:@github.com:lightblueseas/message-system-data.git</connection>
+		<developerConnection>scm:git:git@github.com:lightblueseas/message-system-data.git</developerConnection>
+		<url>git:@github.com:lightblueseas/message-system-data.git</url>
+	</scm>
+
+	<ciManagement>
+		<system>travis-ci</system>
+		<url>https://travis-ci.org/lightblueseas/message-system-data</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/lightblueseas/message-system-data/issues</url>
+	</issueManagement>
+
+	<modules>
+		<module>message-system-entities</module>
+		<module>message-system-business</module>
+		<module>message-system-init</module>
+	</modules>
+	
+	<properties>
+		<!-- JAULP versions -->
+		<jaulp.core.version>4.2.0</jaulp.core.version>
+		<jaulp.email.version>${jaulp.core.version}</jaulp.email.version>
+		<!-- EXTERNAL LIBRARIES versions -->
+		<commons-email.version>1.4</commons-email.version>
+		<subethasmtp.version>3.1.7</subethasmtp.version>
+	</properties>
+
+	<dependencyManagement>
+
+		<dependencies>
+			<!-- PROJECT-DATA DEPENDENCIES -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>message-system-entities</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>message-system-business</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-management-entities</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-management-business</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>resource-system-entities</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>resource-system-business</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- JAULP DEPENDENCIES -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>jaulp.email</artifactId>
+				<version>${jaulp.email.version}</version>
+			</dependency>
+			<!-- APACHE COMMONS DEPENDENCIES -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-email</artifactId>
+				<version>${commons-email.version}</version>
+			</dependency>
+			<!-- JAVA-MAIL TEST DEPENDENCIES -->
+			<dependency>
+				<groupId>org.subethamail</groupId>
+				<artifactId>subethasmtp</artifactId>
+				<version>${subethasmtp.version}</version>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- LOMBOK DEPENDENCIES -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+	</dependencies>
+
+</project>
