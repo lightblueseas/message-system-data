@@ -4,11 +4,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import de.alpharogroup.db.domain.BaseBusinessObject;
+import de.alpharogroup.domain.BaseDomainObject;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.resource.system.domain.Resource;
-import de.alpharogroup.user.management.domain.ContactmethodBusinessObject;
+import de.alpharogroup.user.management.domain.Contactmethod;
 import de.alpharogroup.user.management.domain.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,7 +19,7 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
-public class Message extends BaseBusinessObject<Integer> {
+public class Message extends BaseDomainObject<Integer> {
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -53,7 +53,7 @@ public class Message extends BaseBusinessObject<Integer> {
 	/** The sender of the message. */
 	private User sender;
 	/** The email address from the sender of this message. */
-	private ContactmethodBusinessObject senderEmail;
+	private Contactmethod senderEmail;
 	/** The sent date of the message. */
 	private Date sentDate;
 	/** A flag that indicates if the message is a spam message. */

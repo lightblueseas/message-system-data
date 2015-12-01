@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 
 @Getter
@@ -45,7 +45,7 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 	public String toXml() {
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
 		aliases.put("message", MessageContentModel.class);
-		String xmlString = XmlUtils.toXmlWithXStream(this, aliases);
+		String xmlString = XmlExtensions.toXmlWithXStream(this, aliases);
 		return xmlString;
 	}
 
@@ -56,7 +56,7 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 	public IMessageContentModel toObject(String xml) {
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
 		aliases.put("message", MessageContentModel.class);
-		return XmlUtils.toObjectWithXStream(xml, aliases);
+		return XmlExtensions.toObjectWithXStream(xml, aliases);
 	}
 
 }

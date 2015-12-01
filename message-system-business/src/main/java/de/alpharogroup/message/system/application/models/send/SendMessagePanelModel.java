@@ -2,7 +2,7 @@ package de.alpharogroup.message.system.application.models.send;
 
 import java.io.Serializable;
 
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 
 /**
@@ -92,7 +92,7 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
      */
 	@Override
 	public String toXml() {
-		String xmlString = XmlUtils.toXmlWithXStream(this);
+		String xmlString = XmlExtensions.toXmlWithXStream(this);
 		return xmlString;
 		
 	}
@@ -102,7 +102,7 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
      */
 	@Override
 	public SendMessagePanelModel toObject(String xml) {
-		SendMessagePanelModel model = XmlUtils.toObjectWithXStream(xml);
+		SendMessagePanelModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 

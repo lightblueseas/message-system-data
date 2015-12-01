@@ -2,7 +2,7 @@ package de.alpharogroup.message.system.application.models;
 
 import java.io.Serializable;
 
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 
 import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
@@ -56,7 +56,7 @@ public class InfoMessageModel implements Serializable, Transformable<InfoMessage
      */
 	@Override
 	public String toXml() {
-		String xml = XmlUtils.toXmlWithXStream(this);
+		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
@@ -65,7 +65,7 @@ public class InfoMessageModel implements Serializable, Transformable<InfoMessage
      */
 	@Override
 	public InfoMessageModel toObject(String xml) {
-		InfoMessageModel model = XmlUtils.toObjectWithXStream(xml);
+		InfoMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 	

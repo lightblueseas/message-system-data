@@ -10,7 +10,7 @@ import lombok.ToString;
 import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
 import de.alpharogroup.message.system.application.models.send.api.ISendInformationModel;
 import de.alpharogroup.message.system.application.models.send.api.ISendMessageModel;
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 
 /**
@@ -38,13 +38,13 @@ public class SendMessageModel implements ISendMessageModel, Transformable<SendMe
 
 	@Override
 	public String toXml() {
-		String xml = XmlUtils.toXmlWithXStream(this);
+		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
 	@Override
 	public SendMessageModel toObject(String xml) {
-		SendMessageModel model = XmlUtils.toObjectWithXStream(xml);
+		SendMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 

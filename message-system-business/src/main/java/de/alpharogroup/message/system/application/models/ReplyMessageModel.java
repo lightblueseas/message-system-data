@@ -1,7 +1,7 @@
 package de.alpharogroup.message.system.application.models;
 
 import de.alpharogroup.message.system.entities.Messages;
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 
 /**
  * The Class ReplyMessageModel.
@@ -84,7 +84,7 @@ public class ReplyMessageModel extends BaseMessageModel {
      */
 	@Override
 	public String toXml() {
-		String xml = XmlUtils.toXmlWithXStream(this);
+		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
@@ -93,7 +93,7 @@ public class ReplyMessageModel extends BaseMessageModel {
      */
 	@Override
 	public ReplyMessageModel toObject(String xml) {
-		ReplyMessageModel model = XmlUtils.toObjectWithXStream(xml);
+		ReplyMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 

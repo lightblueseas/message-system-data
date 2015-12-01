@@ -14,7 +14,7 @@ import lombok.Singular;
 import lombok.ToString;
 import de.alpharogroup.message.system.application.models.send.api.ISendInformationModel;
 import de.alpharogroup.user.management.entities.Users;
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 
 /**
@@ -69,7 +69,7 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
      */
 	@Override
 	public String toXml() {
-		String xml = XmlUtils.toXmlWithXStream(this);
+		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
@@ -78,7 +78,7 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
      */
 	@Override
 	public ISendInformationModel toObject(String xml) {
-		ISendInformationModel model = XmlUtils.toObjectWithXStream(xml);
+		ISendInformationModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 

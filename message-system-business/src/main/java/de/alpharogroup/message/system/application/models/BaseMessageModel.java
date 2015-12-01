@@ -4,7 +4,7 @@ import de.alpharogroup.message.system.application.models.send.SendMessageModel;
 import de.alpharogroup.message.system.application.models.send.api.IBaseMessageModel;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
-import de.alpharogroup.xml.XmlUtils;
+import de.alpharogroup.xml.XmlExtensions;
 
 /**
  * The Class BaseMessageModel.
@@ -59,7 +59,7 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
      */
 	@Override
 	public String toXml() {
-		String xml = XmlUtils.toXmlWithXStream(this);
+		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
@@ -68,7 +68,7 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
      */
 	@Override
 	public BaseMessageModel toObject(String xml) {
-		BaseMessageModel model = XmlUtils.toObjectWithXStream(xml);
+		BaseMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 }

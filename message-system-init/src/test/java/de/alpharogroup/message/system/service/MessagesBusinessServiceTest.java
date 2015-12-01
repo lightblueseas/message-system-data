@@ -9,7 +9,7 @@ import java.util.Set;
 import de.alpharogroup.address.book.service.api.AddressesService;
 import de.alpharogroup.auth.models.UsernameSignUpModel;
 import de.alpharogroup.auth.models.ValidationErrors;
-import de.alpharogroup.date.CreateDateUtils;
+import de.alpharogroup.date.CreateDateExtensions;
 import de.alpharogroup.message.system.application.models.BaseMessageModel;
 import de.alpharogroup.message.system.application.models.send.MessageContentModel;
 import de.alpharogroup.message.system.application.models.send.SendInformationModel;
@@ -22,10 +22,10 @@ import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.message.system.service.api.MessagesService;
 import de.alpharogroup.user.management.entities.Roles;
 import de.alpharogroup.user.management.entities.Users;
-import de.alpharogroup.user.management.enums.Gender;
+import de.alpharogroup.user.management.enums.GenderType;
 import de.alpharogroup.user.management.factories.UserManagementModelFactory;
 import de.alpharogroup.user.management.service.api.RolesService;
-import de.alpharogroup.user.management.service.api.UserManagementService;
+import de.alpharogroup.user.management.service.api.UsersManagementService;
 import de.alpharogroup.user.management.sign.up.SignUpUserResult;
 import de.alpharogroup.user.management.sign.up.UserModel;
 
@@ -38,7 +38,7 @@ import org.testng.annotations.Test;
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
 public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
-	private UserManagementService userManagementService;
+	private UsersManagementService userManagementService;
 	@Autowired
 	private RolesService rolesService;
 	@Autowired
@@ -115,9 +115,9 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 		UserManagementModelFactory userManagementModelFactory = UserManagementModelFactory.getInstance();
 		UserModel userModel = userManagementModelFactory.newUserModel(
 				lastname,
-				CreateDateUtils.newDate(1974, 8, 28),
+				CreateDateExtensions.newDate(1974, 8, 28),
 				firstname,
-				Gender.MALE,
+				GenderType.MALE,
 				"127.0.0.1",
 				lastname,
 				Locale.GERMAN,

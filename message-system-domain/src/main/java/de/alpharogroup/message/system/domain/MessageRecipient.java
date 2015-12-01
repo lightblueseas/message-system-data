@@ -1,7 +1,7 @@
 package de.alpharogroup.message.system.domain;
 
-import de.alpharogroup.db.domain.BaseBusinessObject;
-import de.alpharogroup.user.management.domain.ContactmethodBusinessObject;
+import de.alpharogroup.domain.BaseDomainObject;
+import de.alpharogroup.user.management.domain.Contactmethod;
 import de.alpharogroup.user.management.domain.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=true)
-public class MessageRecipient extends BaseBusinessObject<Integer> {
+public class MessageRecipient extends BaseDomainObject<Integer> {
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
 	/**
@@ -28,5 +28,5 @@ public class MessageRecipient extends BaseBusinessObject<Integer> {
 	 * recipient is a user outside from the system. For instance a user from the
 	 * system makes a recommendation to a friend.
 	 */
-	private ContactmethodBusinessObject recipientEmail;
+	private Contactmethod recipientEmail;
 }

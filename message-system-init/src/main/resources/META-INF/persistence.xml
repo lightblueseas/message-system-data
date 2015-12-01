@@ -21,7 +21,7 @@
 		<class>de.alpharogroup.user.management.entities.Robinsons</class>
 		<class>de.alpharogroup.user.management.entities.Roles</class>
 		<class>de.alpharogroup.user.management.entities.RuleViolations</class>
-		<class>de.alpharogroup.user.management.entities.UserData</class>
+		<class>de.alpharogroup.user.management.entities.UserDatas</class>
 		<class>de.alpharogroup.user.management.entities.Users</class>		
 		<class>de.alpharogroup.user.management.entities.UserCredits</class>		
 		
