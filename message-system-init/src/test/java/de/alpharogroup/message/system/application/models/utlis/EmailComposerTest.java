@@ -2,9 +2,9 @@ package de.alpharogroup.message.system.application.models.utlis;
 
 import java.util.Locale;
 
-import de.alpharogroup.locale.Locales;
 import de.alpharogroup.message.system.application.models.InfoMessageModel;
 import de.alpharogroup.message.system.application.models.utils.EmailComposer;
+import de.alpharogroup.resourcebundle.locale.Locales;
 
 import org.testng.annotations.Test;
 

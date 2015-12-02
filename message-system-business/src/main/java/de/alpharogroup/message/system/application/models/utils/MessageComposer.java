@@ -7,18 +7,18 @@ import java.net.URISyntaxException;
 import java.util.Locale;
 import java.util.Map;
 
-import de.alpharogroup.file.read.ReadFileUtils;
-import de.alpharogroup.lang.ClassExtensions;
-import de.alpharogroup.locale.LocaleUtils;
-import de.alpharogroup.message.system.application.models.send.MessageContentModel;
-import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
-import de.alpharogroup.velocity.VelocityUtils;
-
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.runtime.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import de.alpharogroup.file.read.ReadFileExtensions;
+import de.alpharogroup.lang.ClassExtensions;
+import de.alpharogroup.message.system.application.models.send.MessageContentModel;
+import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
+import de.alpharogroup.resourcebundle.locale.LocaleExtensions;
+import de.alpharogroup.velocity.VelocityExtensions;
 
 /**
  * The Class MessageComposer.
@@ -46,9 +46,9 @@ public class MessageComposer {
 				xmlMailTemplateName, locale, false);
 		IMessageContentModel xmlMailTemplate = getEmailTemplate(localizedName);
 
-		Template subjectTemplate = VelocityUtils.getTemplate(xmlMailTemplate.getSubject());
+		Template subjectTemplate = VelocityExtensions.getTemplate(xmlMailTemplate.getSubject());
 
-		Template contentTemplate = VelocityUtils.getTemplate(xmlMailTemplate.getContent());
+		Template contentTemplate = VelocityExtensions.getTemplate(xmlMailTemplate.getContent());
 
 		VelocityContext context = new VelocityContext(contextModel);
 		StringWriter contentWriter = new StringWriter();
@@ -74,7 +74,7 @@ public class MessageComposer {
 			String xmlMailTemplateName, Locale locale, boolean withCountry) {
 		StringBuilder localizedName = new StringBuilder();
 		localizedName.append(xmlMailTemplateName);
-		localizedName.append(LocaleUtils.getLocaleFileSuffix(locale, withCountry));
+		localizedName.append(LocaleExtensions.getLocaleFileSuffix(locale, withCountry));
 		localizedName.append(".xml");
 		return localizedName.toString().trim();
 	}
@@ -90,7 +90,7 @@ public class MessageComposer {
 	public static IMessageContentModel getEmailTemplate(String name)
 			throws IOException, URISyntaxException {
 		InputStream is = ClassExtensions.getResourceAsStream(name);
-		String xmlString = ReadFileUtils.inputStream2String(is);
+		String xmlString = ReadFileExtensions.inputStream2String(is);
 		IMessageContentModel messageModel = new MessageContentModel().toObject(xmlString);
 		return messageModel;
 	}

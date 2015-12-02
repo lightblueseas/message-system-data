@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import de.alpharogroup.lang.PropertiesUtils;
 import de.alpharogroup.message.system.db.init.DatabaseInitialization;
+import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 public class InitializeDatabase {
 
@@ -19,7 +19,7 @@ public class InitializeDatabase {
 	 */
 	public static void main(final String[] args) throws ClassNotFoundException,
 			SQLException, IOException {
-		Properties dbProperties = PropertiesUtils.loadProperties("jdbc.properties");
+		Properties dbProperties = PropertiesExtensions.loadProperties("jdbc.properties");
 		new DatabaseInitialization(dbProperties).initializeDatabase();
 	}
 

@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import de.alpharogroup.locale.Locales;
 import de.alpharogroup.message.system.application.models.InfoMessageModel;
 import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
+import de.alpharogroup.resourcebundle.locale.Locales;
 
 import org.apache.velocity.runtime.parser.ParseException;
 import org.slf4j.Logger;

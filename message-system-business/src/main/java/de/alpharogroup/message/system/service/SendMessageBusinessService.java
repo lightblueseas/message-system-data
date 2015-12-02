@@ -12,7 +12,7 @@ import de.alpharogroup.email.messages.EmailMessage;
 import de.alpharogroup.email.send.SendEmail;
 import de.alpharogroup.email.utils.EmailExtensions;
 import de.alpharogroup.message.system.application.models.InfoMessageModel;
-import de.alpharogroup.string.StringUtils;
+import de.alpharogroup.string.StringExtensions;
 
 /**
  * The Class SendMessageBusinessService.
@@ -80,7 +80,7 @@ public class SendMessageBusinessService {
 		// Set subject
 		LOGGER.debug("Subject:"+subject);
 		// Remove new line characters from subject. If the subject contains new line characters a strange behavior occurs... 
-		subject = StringUtils.removeNewlineCharacters(subject);
+		subject = StringExtensions.removeNewlineCharacters(subject);
 		emailMessage.setSubject(subject);
 		// Set content...
 		LOGGER.debug("Content:"+content);

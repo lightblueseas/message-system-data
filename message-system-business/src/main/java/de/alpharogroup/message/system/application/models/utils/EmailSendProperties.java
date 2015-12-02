@@ -7,7 +7,7 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 
 import de.alpharogroup.email.send.SendEmail;
-import de.alpharogroup.lang.PropertiesUtils;
+import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 public final class EmailSendProperties {
 
@@ -21,10 +21,9 @@ public final class EmailSendProperties {
 	}
 	
 	public static Properties getEmailSendProperties() throws IOException {
-		Properties properties = PropertiesUtils.loadProperties("emailsender.properties");
+		Properties properties = PropertiesExtensions.loadProperties("emailsender.properties");
 		return properties;
-	}
-	
+	}	
 
 	public static SendEmail getGmailSender(final String username, final String password)
 			throws IOException, MessagingException {

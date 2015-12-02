@@ -24,6 +24,11 @@
 			<artifactId>message-system-business</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>user-management-domain</artifactId>
+		</dependency>
+
 	</dependencies>
 	
 </project>

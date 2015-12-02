@@ -14,11 +14,6 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>domain-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
 			<artifactId>business-api</artifactId>
 		</dependency>
 
@@ -34,17 +29,12 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>user-management-domain</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>de.alpharogroup</groupId>
 			<artifactId>resource-system-business</artifactId>
 		</dependency>
-		<!-- JAULP DEPENDENCIES -->
+		<!-- NEW EXTENSIONS LIB DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
-			<artifactId>jaulp.email</artifactId>
+			<artifactId>email-tails</artifactId>
 		</dependency>
 
 		<dependency>

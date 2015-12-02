@@ -12,7 +12,7 @@ import de.alpharogroup.email.messages.EmailConstants;
 import de.alpharogroup.email.messages.EmailMessage;
 import de.alpharogroup.email.send.SendEmail;
 import de.alpharogroup.email.utils.EmailExtensions;
-import de.alpharogroup.file.read.ReadFileUtils;
+import de.alpharogroup.file.read.ReadFileExtensions;
 import de.alpharogroup.lang.ClassExtensions;
  
 public class SendMailTLS {
@@ -49,7 +49,7 @@ public class SendMailTLS {
 		String thirdKey = prop.getProperty("post.send.third.key");
 				
 		InputStream is = ClassExtensions.getResourceAsStream("gmail.pw");
-		String encrypted = ReadFileUtils.inputStream2String(is);		
+		String encrypted = ReadFileExtensions.inputStream2String(is);		
 		
 		Decryptor firstDecryptor = new HexDecryptor(firstKey);
 		Decryptor secondDecryptor = new HexDecryptor(secondKey);
