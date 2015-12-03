@@ -43,6 +43,9 @@
 		<module>message-system-business</module>
 		<module>message-system-init</module>
 		<module>message-system-domain</module>
+		<module>message-system-rest-api</module>
+		<module>message-system-rest-client</module>
+		<module>message-system-rest-web</module>
 	</modules>
 	
 	<properties>
