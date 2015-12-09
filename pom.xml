@@ -47,7 +47,7 @@
 		<module>message-system-rest-client</module>
 		<module>message-system-rest-web</module>
 	</modules>
-	
+
 	<properties>
 		<!-- NEW EXTENSIONS LIB versions -->
 		<extensions-lib.version>4.8.0</extensions-lib.version>
@@ -64,6 +64,12 @@
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>message-system-entities</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>message-system-domain</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
@@ -90,7 +96,7 @@
 				<artifactId>user-management-domain</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>resource-system-entities</artifactId>
