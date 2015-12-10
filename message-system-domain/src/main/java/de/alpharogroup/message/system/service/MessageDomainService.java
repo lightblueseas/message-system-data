@@ -1,6 +1,8 @@
 package de.alpharogroup.message.system.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import de.alpharogroup.message.system.daos.MessagesDao;
 import de.alpharogroup.message.system.domain.Message;
@@ -12,6 +14,8 @@ import de.alpharogroup.service.domain.AbstractDomainService;
 import lombok.Getter;
 import lombok.Setter;
 
+@Transactional
+@Service("messageDomainService")
 public class MessageDomainService extends AbstractDomainService<Integer, Message, Messages, MessagesDao, MessagesMapper>
 		implements MessageService {
 
@@ -28,7 +32,7 @@ public class MessageDomainService extends AbstractDomainService<Integer, Message
 	 *            the new {@link MessagesDao}.
 	 */
 	@Autowired
-	public void setMessagesDao(MessagesDao messagesDao) {
+	public void setMessagesDao(final MessagesDao messagesDao) {
 		setDao(messagesDao);
 	}
 }
