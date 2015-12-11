@@ -3,6 +3,7 @@ package de.alpharogroup.message.system.rest.client;
 import de.alpharogroup.cxf.rest.client.AbstractRestClient;
 import de.alpharogroup.message.system.rest.api.MessageRecipientsResource;
 import de.alpharogroup.message.system.rest.api.MessagesResource;
+import lombok.Getter;
 
 /**
  * The class {@link MessageSystemRestClient}.
@@ -10,11 +11,17 @@ import de.alpharogroup.message.system.rest.api.MessagesResource;
 public class MessageSystemRestClient extends AbstractRestClient
 {
 
-	/** The messages resource. */
-	MessagesResource messagesResource;
+	/**
+	 * The {@link MessagesResource}.
+	 */
+	@Getter
+	private final MessagesResource messagesResource;
 
-	/** The message recipients resource. */
-	MessageRecipientsResource messageRecipientsResource;
+	/**
+	 * The {@link MessageRecipientsResource}.
+	 */
+	@Getter
+	private final MessageRecipientsResource messageRecipientsResource;
 
 	/**
 	 * Instantiates a new {@link MessageSystemRestClient} with the default base url.
