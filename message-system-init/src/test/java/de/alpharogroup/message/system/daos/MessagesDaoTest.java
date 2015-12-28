@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
-import de.alpharogroup.message.system.daos.MessagesDao;
 import de.alpharogroup.message.system.entities.Messages;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
@@ -16,9 +15,9 @@ public class MessagesDaoTest extends AbstractTestNGSpringContextTests {
 	private MessagesDao messagesDao;
 
 
-	@Test
+	@Test(enabled=false)
 	public void testFindAll() {
-		List<Messages> all = messagesDao.findAll();
-		System.out.println(all);		
+		final List<Messages> all = messagesDao.findAll();
+		System.out.println(all);
 	}
 }

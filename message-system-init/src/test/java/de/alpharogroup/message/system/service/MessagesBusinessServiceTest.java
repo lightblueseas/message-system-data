@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
 import de.alpharogroup.address.book.service.api.AddressesService;
 import de.alpharogroup.auth.models.UsernameSignUpModel;
 import de.alpharogroup.auth.models.ValidationErrors;
@@ -29,12 +35,6 @@ import de.alpharogroup.user.management.service.api.UsersManagementService;
 import de.alpharogroup.user.management.sign.up.SignUpUserResult;
 import de.alpharogroup.user.management.sign.up.UserModel;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
 public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTests {
 	@Autowired
@@ -45,11 +45,11 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 	private MessagesService messagesService;
 	@Autowired
 	private AddressesService addressesService;
-	
-	@Test
+
+	@Test(enabled=false)
 	public void testSaveMessageWithRecipients() {
 		IMessageContentModel messageModel = new MessageContentModel();
-		ISendInformationModel sendInformationModel = new SendInformationModel();		
+		ISendInformationModel sendInformationModel = new SendInformationModel();
 		messageModel.setContent("Hello guys,\n\nhow are you?\n\nCheers\n\nMichael");
 		messageModel.setSubject("Hi guys");
 		IBaseMessageModel model = new BaseMessageModel();
@@ -58,24 +58,24 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 		model.setMessageState(MessageState.UNREPLIED);
 		model.setMessageType(MessageType.MAIL);
 
-		Users sender = getUser("Michael", "Knight", "michael.knight@gmail.com", "knight");
-		Set<Users> recipients = new HashSet<Users>();
-		
-		Users recipient = getUser("Anton", "Einstein", "anton.einstein@gmail.com", "einstein");
+		final Users sender = getUser("Michael", "Knight", "michael.knight@gmail.com", "knight");
+		final Set<Users> recipients = new HashSet<Users>();
+
+		final Users recipient = getUser("Anton", "Einstein", "anton.einstein@gmail.com", "einstein");
 		recipients.add(recipient);
 		model.getSendInformationModel().setRecipients(recipients);
 		model.getSendInformationModel().setSender(sender);
 		model.getSendInformationModel().setSentDate(new Date(System.currentTimeMillis()));
-		Messages message = messagesService.saveMessageWithRecipients(model);
+		final Messages message = messagesService.saveMessageWithRecipients(model);
 		AssertJUnit.assertTrue(messagesService.exists(message.getId()));
-		Set<Users> r = messagesService.getRecipients(message);
+		final Set<Users> r = messagesService.getRecipients(message);
 		AssertJUnit.assertTrue(r != null && !r.isEmpty());
-		AssertJUnit.assertTrue(r.iterator().next().equals(recipient));	
-		
+		AssertJUnit.assertTrue(r.iterator().next().equals(recipient));
+
 		// Test the find reply messages...
 		// Create a reply message...
 		messageModel = new MessageContentModel();
-		sendInformationModel = new SendInformationModel();		
+		sendInformationModel = new SendInformationModel();
 		messageModel.setContent("Hello Michael,\n\nim fine and you?\n\nCheers\n\nAnton");
 		messageModel.setSubject("Re:Hi guys");
 		model = new BaseMessageModel();
@@ -90,30 +90,30 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 		model.getSendInformationModel().setRecipients(recipients);
 		model.getSendInformationModel().setSender(recipient);
 		model.getSendInformationModel().setSentDate(new Date(System.currentTimeMillis()));
-		Messages replyMessage = messagesService.saveMessageWithRecipients(model);
+		final Messages replyMessage = messagesService.saveMessageWithRecipients(model);
 		replyMessage.setParent(message);
 		messagesService.merge(replyMessage);
-		List<Messages> replies = messagesService.findReplyMessages(recipient);
+		final List<Messages> replies = messagesService.findReplyMessages(recipient);
 		System.out.println(replies);
 	}
-	
+
 
 	public Set<Roles> createRolesSet() {
-		List<Roles> r = rolesService.findAll();
-		Set<Roles> roles = new HashSet<Roles>();
+		final List<Roles> r = rolesService.findAll();
+		final Set<Roles> roles = new HashSet<Roles>();
 		if(r != null && !r.isEmpty()) {
 			roles.add(r.get(0));
 		} else {
-			Roles role = rolesService.createAndSaveRole("ADMIN", "The admin role");
+			final Roles role = rolesService.createAndSaveRole("ADMIN", "The admin role");
 			roles.add(role);
 		}
 		return roles;
 	}
-	
-	public Users getUser(String firstname, String lastname, String email, String username) {
-	
-		UserManagementModelFactory userManagementModelFactory = UserManagementModelFactory.getInstance();
-		UserModel userModel = userManagementModelFactory.newUserModel(
+
+	public Users getUser(final String firstname, final String lastname, final String email, final String username) {
+
+		final UserManagementModelFactory userManagementModelFactory = UserManagementModelFactory.getInstance();
+		final UserModel userModel = userManagementModelFactory.newUserModel(
 				lastname,
 				CreateDateExtensions.newDate(1974, 8, 28),
 				firstname,
@@ -125,18 +125,18 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 				"032325444444",
 				"032325444445",
 				addressesService.get(30224)); // Ludwigsburg
-		
-		UsernameSignUpModel usernameSignUpModel = userManagementModelFactory.newUsernameSignupModel(
+
+		final UsernameSignUpModel usernameSignUpModel = userManagementModelFactory.newUsernameSignupModel(
 				email,
 				"xxx",
 				"xxx",
 				Boolean.TRUE,
 				username);
-		
-		Set<Roles> roles = createRolesSet();
-		SignUpUserResult result = userManagementService.signUpUser(usernameSignUpModel, roles, userModel);
+
+		final Set<Roles> roles = createRolesSet();
+		final SignUpUserResult result = userManagementService.signUpUser(usernameSignUpModel, roles, userModel);
 		if(result.getUser() == null){
-			ValidationErrors errors = result.getValidationErrors();
+			final ValidationErrors errors = result.getValidationErrors();
 			if(errors.equals(ValidationErrors.EMAIL_EXISTS_ERROR)){
 				return userManagementService.findUserWithEmailOrUsername(email);
 			}

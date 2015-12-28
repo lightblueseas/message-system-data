@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-persistence-parent</artifactId>
-		<version>2.23.0</version>
+		<version>2.25.0</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>message-system-data</artifactId>
 	<packaging>pom</packaging>
-	<version>3.1.0</version>
+	<version>3.6.0</version>
 	<inceptionYear>2015</inceptionYear>
 
 	<name>${project.artifactId}</name>
@@ -49,12 +49,20 @@
 	</modules>
 
 	<properties>
-		<!-- NEW EXTENSIONS LIB versions -->
-		<extensions-lib.version>4.8.0</extensions-lib.version>
+		<!-- EXTENSIONS LIB versions -->
 		<email-tails.version>${extensions-lib.version}</email-tails.version>
 		<!-- EXTERNAL LIBRARIES versions -->
 		<commons-email.version>1.4</commons-email.version>
 		<subethasmtp.version>3.1.7</subethasmtp.version>
+		<!-- USER-MANAGEMENT-DATA versions -->
+		<user-management-data.version>${project.version}</user-management-data.version>
+		<user-management-entities.version>${user-management-data.version}</user-management-entities.version>
+		<user-management-business.version>${user-management-data.version}</user-management-business.version>
+		<user-management-domain.version>${user-management-data.version}</user-management-domain.version>
+		<!-- RESOURCE-SYSTEM-DATA versions -->
+		<resource-system-data.version>${project.version}</resource-system-data.version>
+		<resource-system-entities.version>${resource-system-data.version}</resource-system-entities.version>
+		<resource-system-business.version>${resource-system-data.version}</resource-system-business.version>
 	</properties>
 
 	<dependencyManagement>
@@ -84,35 +92,35 @@
 				<artifactId>message-system-business</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
+			<!-- USER-MANAGEMENT-DATA DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>user-management-entities</artifactId>
-				<version>${project.version}</version>
+				<version>${user-management-entities.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>user-management-business</artifactId>
-				<version>${project.version}</version>
+				<version>${user-management-business.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>user-management-domain</artifactId>
-				<version>${project.version}</version>
+				<version>${user-management-domain.version}</version>
 			</dependency>
-
+			<!-- RESOURCE-SYSTEM-DATA DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>resource-system-entities</artifactId>
-				<version>${project.version}</version>
+				<version>${resource-system-entities.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>resource-system-business</artifactId>
-				<version>${project.version}</version>
+				<version>${resource-system-business.version}</version>
 			</dependency>
 			<!-- NEW EXTENSIONS LIB DEPENDENCIES -->
 			<dependency>
