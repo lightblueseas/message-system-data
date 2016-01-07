@@ -19,22 +19,23 @@ import de.alpharogroup.user.management.entities.Users;
 @Transactional
 @Service("messageRecipientsService")
 public class MessageRecipientsBusinessService extends AbstractBusinessService<MessageRecipients, Integer, MessageRecipientsDao> implements MessageRecipientsService {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	public void setMessageRecipientsDao(MessageRecipientsDao messageRecipientsDao) {
+	public void setMessageRecipientsDao(final MessageRecipientsDao messageRecipientsDao) {
 		setDao(messageRecipientsDao);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public boolean deleteMessageRecipient(final Users recipient,
 			final Messages message) {
-		final String hqlSelectString = 
-				"select distinct mr from MessageRecipients mr " +
+		final String hqlSelectString =
+				"select distinct mr from " + MessageRecipients.class.getSimpleName() + " mr " +
 				"where mr.recipient=:recipient " +
 				"and mr.message=:message";
 
