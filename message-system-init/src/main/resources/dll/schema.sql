@@ -1,7 +1,4 @@
-create table BaseAttributesEntity (id int4 not null, primary key (id));
 create table addresses (id int4 not null, address_comment varchar(100), geohash varchar(16), latitude varchar(12), longitude varchar(12), street varchar(64), streetnumber varchar(5), federalstate_id int4, zipcode_id int4, primary key (id));
-create table attributes (id int4 not null, name varchar(64), type varchar(256), value varchar(2048), primary key (id));
-create table base_attributes (base_attributes_id int4 not null, attributes_id int4 not null, primary key (base_attributes_id, attributes_id));
 create table blacklisted_contacts (user_data_id int4 not null, blacklisted_id int4 not null, primary key (user_data_id, blacklisted_id));
 create table contactmethods (id int4 not null, contactmethod varchar(255), contactvalue varchar(1024), primary key (id));
 create table countries (id int4 not null, iso3166_a2name varchar(2), iso3166_a3name varchar(3), iso3166_number varchar(3), name varchar(128), primary key (id));
@@ -21,6 +18,7 @@ create table rule_violations (id int4 not null, description varchar(1000), reaso
 create table user_addresses (user_data_id int4 not null, addresses_id int4 not null, primary key (user_data_id, addresses_id));
 create table user_contactmethods (user_data_id int4 not null, contactmethods_id int4 not null, primary key (user_data_id, contactmethods_id));
 create table user_contacts (user_data_id int4 not null, user_contact_id int4 not null, primary key (user_data_id, user_contact_id));
+create table user_credits (id int4 not null, credits int4, user_id int4, primary key (id));
 create table user_data (id int4 not null, birthname varchar(64), dateofbirth timestamp, firstname varchar(64), gender varchar(255), ip_address varchar(16), lastname varchar(64), locale varchar(12), primary_address_id int4, primary key (id));
 create table user_relation_permissions (user_relation_permission_id int4 not null, permission_id int4 not null, primary key (user_relation_permission_id, permission_id));
 create table user_resources (user_data_id int4 not null, resources_id int4 not null, primary key (user_data_id, resources_id));
