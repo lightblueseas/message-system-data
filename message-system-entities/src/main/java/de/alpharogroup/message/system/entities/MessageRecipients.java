@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Entity class {@link MessageRecipients} is keeping the
+ * The entity class {@link MessageRecipients} is keeping the
  * information which recipients received the message.
  */
 @Entity
@@ -24,8 +24,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MessageRecipients 
-extends BaseEntity<Integer> 
+public class MessageRecipients
+extends BaseEntity<Integer>
 implements Cloneable {
 
 	/** The serial Version UID */
@@ -41,7 +41,7 @@ implements Cloneable {
 	 */
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "recipient_id", nullable = true, referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_MESSAGE_RECIPIENTS_RECIPIENT_ID"))
-	private Users recipient;	
+	private Users recipient;
 	/**
 	 * The recipient email as a String object that can be indicate that the
 	 * recipient is a user outside from the system. For instance a user from the
