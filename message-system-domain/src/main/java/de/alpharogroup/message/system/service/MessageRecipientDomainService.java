@@ -37,4 +37,15 @@ public class MessageRecipientDomainService extends
 	public void setMessageRecipientsDao(final MessageRecipientsDao messageRecipientsDao) {
 		setDao(messageRecipientsDao);
 	}
+	/**
+	 * Sets the specific {@link MessageRecipientsMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link MessageRecipientsMapper}.
+	 */
+	@Autowired
+	public void setMessageRecipientsMapper(MessageRecipientsMapper mapper) {
+		setMapper(mapper);
+	}
+
 }
