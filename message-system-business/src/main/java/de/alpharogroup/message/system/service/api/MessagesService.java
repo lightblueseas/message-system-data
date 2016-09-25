@@ -3,7 +3,7 @@ package de.alpharogroup.message.system.service.api;
 import java.util.List;
 import java.util.Set;
 
-import de.alpharogroup.db.service.jpa.BusinessService;
+import de.alpharogroup.db.service.api.BusinessService;
 import de.alpharogroup.message.system.application.models.send.api.IBaseMessageModel;
 import de.alpharogroup.message.system.entities.Messages;
 import de.alpharogroup.message.system.enums.MessageState;
