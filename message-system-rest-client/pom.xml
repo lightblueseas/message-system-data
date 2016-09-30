@@ -15,10 +15,20 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>rest-client</artifactId>
 		</dependency>
-
+		<!-- MESSAGE-SYSTEM-REST-API DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>message-system-rest-api</artifactId>
+		</dependency>
+		<!-- USER-MANAGEMENT-REST-API DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>user-management-rest-api</artifactId>
+		</dependency>
+		<!-- RESOURCE-SYSTEM-REST-API DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>resource-system-rest-api</artifactId>
 		</dependency>
 
 	</dependencies>
