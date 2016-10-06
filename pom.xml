@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>mvn-persistence-parent</artifactId>
-		<version>2.28.0</version>
+		<version>2.40.0</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<artifactId>message-system-data</artifactId>
 	<packaging>pom</packaging>
-	<version>3.6.0</version>
+	<version>3.9.0</version>
 	<inceptionYear>2015</inceptionYear>
 
 	<name>${project.artifactId}</name>
@@ -59,10 +59,12 @@
 		<user-management-entities.version>${user-management-data.version}</user-management-entities.version>
 		<user-management-business.version>${user-management-data.version}</user-management-business.version>
 		<user-management-domain.version>${user-management-data.version}</user-management-domain.version>
+		<user-management-rest-api.version>${user-management-data.version}</user-management-rest-api.version>
 		<!-- RESOURCE-SYSTEM-DATA versions -->
 		<resource-system-data.version>${project.version}</resource-system-data.version>
 		<resource-system-entities.version>${resource-system-data.version}</resource-system-entities.version>
 		<resource-system-business.version>${resource-system-data.version}</resource-system-business.version>
+		<resource-system-rest-api.version>${resource-system-data.version}</resource-system-rest-api.version>
 	</properties>
 
 	<dependencyManagement>
@@ -110,6 +112,12 @@
 				<artifactId>user-management-domain</artifactId>
 				<version>${user-management-domain.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-management-rest-api</artifactId>
+				<version>${user-management-rest-api.version}</version>
+			</dependency>			
 			<!-- RESOURCE-SYSTEM-DATA DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -122,6 +130,12 @@
 				<artifactId>resource-system-business</artifactId>
 				<version>${resource-system-business.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>resource-system-rest-api</artifactId>
+				<version>${resource-system-rest-api.version}</version>
+			</dependency>			
 			<!-- NEW EXTENSIONS LIB DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>

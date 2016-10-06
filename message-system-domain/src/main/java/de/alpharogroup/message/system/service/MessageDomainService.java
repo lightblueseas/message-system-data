@@ -35,4 +35,15 @@ public class MessageDomainService extends AbstractDomainService<Integer, Message
 	public void setMessagesDao(final MessagesDao messagesDao) {
 		setDao(messagesDao);
 	}
+	/**
+	 * Sets the specific {@link MessagesMapper}.
+	 *
+	 * @param mapper
+	 *            the new {@link MessagesMapper}.
+	 */
+	@Autowired
+	public void setMessagesMapper(MessagesMapper mapper) {
+		setMapper(mapper);
+	}
+
 }

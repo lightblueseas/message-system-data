@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>de.alpharogroup</groupId>
-    <artifactId>message-system-data</artifactId>
-    <version>3.6.0</version>
-  </parent>
+	<parent>
+		<groupId>de.alpharogroup</groupId>
+		<artifactId>message-system-data</artifactId>
+		<version>3.9.0</version>
+	</parent>
 
-  <artifactId>message-system-rest-client</artifactId>
+	<artifactId>message-system-rest-client</artifactId>
 
 	<dependencies>
 
@@ -15,10 +16,20 @@
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>rest-client</artifactId>
 		</dependency>
-
+		<!-- MESSAGE-SYSTEM-REST-API DEPENDENCIES -->
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
 			<artifactId>message-system-rest-api</artifactId>
+		</dependency>
+		<!-- USER-MANAGEMENT-REST-API DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>user-management-rest-api</artifactId>
+		</dependency>
+		<!-- RESOURCE-SYSTEM-REST-API DEPENDENCIES -->
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
+			<artifactId>resource-system-rest-api</artifactId>
 		</dependency>
 
 	</dependencies>
