@@ -28,7 +28,7 @@ public class MessageSystemRestClient extends AbstractRestClient
 	 */
 	public MessageSystemRestClient()
 	{
-		this(DEFAULT_BASE_URL);
+		this(DEFAULT_BASE_HTTP_URL);
 	}
 
 	/**
