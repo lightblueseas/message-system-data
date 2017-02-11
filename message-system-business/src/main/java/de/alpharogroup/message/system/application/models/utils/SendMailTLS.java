@@ -5,14 +5,18 @@ import java.util.Properties;
 
 import javax.mail.MessagingException;
 
-import de.alpharogroup.crypto.aes.ChainedDecryptor;
-import de.alpharogroup.crypto.aes.HexDecryptor;
-import de.alpharogroup.crypto.interfaces.Decryptor;
+import de.alpharogroup.crypto.chainable.ChainableStringDecryptor;
+import de.alpharogroup.crypto.chainable.ChainableStringEncryptor;
+import de.alpharogroup.crypto.core.ChainableDecryptor;
+import de.alpharogroup.crypto.hex.HexableDecryptor;
+import de.alpharogroup.crypto.hex.HexableEncryptor;
 import de.alpharogroup.email.messages.EmailConstants;
 import de.alpharogroup.email.messages.EmailMessage;
 import de.alpharogroup.email.send.SendEmail;
 import de.alpharogroup.email.utils.EmailExtensions;
 import de.alpharogroup.file.read.ReadFileExtensions;
+import de.alpharogroup.file.search.PathFinder;
+import de.alpharogroup.file.write.WriteFileExtensions;
 import de.alpharogroup.lang.ClassExtensions;
  
 public class SendMailTLS {
@@ -20,9 +24,9 @@ public class SendMailTLS {
 	public static void main(String[] args) throws Exception, MessagingException {
  
 		final String username = "error.flirteros@gmail.com";
-		String password = "3rr0r.fl1rt3r0s";
-		
-		 password = decryptPassword();	
+		String password;
+				
+		password = decryptPassword();	
  
 		SendEmail sender = EmailSendProperties.getGmailSender(username, password);
 		
@@ -51,12 +55,27 @@ public class SendMailTLS {
 		InputStream is = ClassExtensions.getResourceAsStream("gmail.pw");
 		String encrypted = ReadFileExtensions.inputStream2String(is);		
 		
-		Decryptor firstDecryptor = new HexDecryptor(firstKey);
-		Decryptor secondDecryptor = new HexDecryptor(secondKey);
-		Decryptor thirdDecryptor = new HexDecryptor(thirdKey);		
-		ChainedDecryptor decryptor = new ChainedDecryptor(thirdDecryptor, secondDecryptor, firstDecryptor);
+		HexableDecryptor firstDecryptor = new HexableDecryptor(firstKey);
+		HexableDecryptor secondDecryptor = new HexableDecryptor(secondKey);
+		HexableDecryptor thirdDecryptor = new HexableDecryptor(thirdKey);		
+		ChainableDecryptor<String> decryptor = new ChainableStringDecryptor(thirdDecryptor, secondDecryptor, firstDecryptor);
 		
 		return decryptor.decrypt(encrypted);
+	}
+
+	protected static void encryptPassword(String pw, String filename) throws Exception {
+		Properties prop = EmailSendProperties.getEmailSendProperties();
+		String firstKey = prop.getProperty("post.send.first.key");
+		String secondKey = prop.getProperty("post.send.second.key");
+		String thirdKey = prop.getProperty("post.send.third.key");
+				
+		final HexableEncryptor firstEncryptor = new HexableEncryptor(firstKey);
+		final HexableEncryptor secondEncryptor = new HexableEncryptor(secondKey);
+		final HexableEncryptor thirdEncryptor = new HexableEncryptor(thirdKey);
+		final ChainableStringEncryptor encryptor = new ChainableStringEncryptor(firstEncryptor,
+			secondEncryptor, thirdEncryptor);
+		
+		WriteFileExtensions.writeStringToFile(PathFinder.getRelativePath(PathFinder.getSrcMainResourcesDir(), "gmail.pw"), encryptor.encrypt(pw), "UTF-8");
 	}
 
 }
