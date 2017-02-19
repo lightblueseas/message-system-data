@@ -26,11 +26,11 @@ import de.alpharogroup.message.system.entities.Messages;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.message.system.service.api.MessagesService;
-import de.alpharogroup.user.management.entities.Roles;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Roles;
+import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.management.enums.GenderType;
 import de.alpharogroup.user.management.factories.UserManagementModelFactory;
-import de.alpharogroup.user.management.service.api.RolesService;
+import de.alpharogroup.user.service.api.RolesService;
 import de.alpharogroup.user.management.service.api.UsersManagementService;
 import de.alpharogroup.user.management.sign.up.SignUpUserResult;
 import de.alpharogroup.user.management.sign.up.UserModel;
@@ -59,7 +59,7 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 		model.setMessageType(MessageType.MAIL);
 
 		final Users sender = getUser("Michael", "Knight", "michael.knight@gmail.com", "knight");
-		final Set<Users> recipients = new HashSet<Users>();
+		final Set<Users> recipients = new HashSet<>();
 
 		final Users recipient = getUser("Anton", "Einstein", "anton.einstein@gmail.com", "einstein");
 		recipients.add(recipient);
@@ -100,7 +100,7 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 
 	public Set<Roles> createRolesSet() {
 		final List<Roles> r = rolesService.findAll();
-		final Set<Roles> roles = new HashSet<Roles>();
+		final Set<Roles> roles = new HashSet<>();
 		if(r != null && !r.isEmpty()) {
 			roles.add(r.get(0));
 		} else {

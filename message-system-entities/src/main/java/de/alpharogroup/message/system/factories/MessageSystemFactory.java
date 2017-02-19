@@ -8,7 +8,7 @@ import de.alpharogroup.message.system.entities.Messages;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.user.management.entities.Contactmethods;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Users;
 
 /**
  * A factory for creating Domain objects for the message system.

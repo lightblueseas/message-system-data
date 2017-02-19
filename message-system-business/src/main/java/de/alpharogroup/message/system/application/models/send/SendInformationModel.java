@@ -13,7 +13,7 @@ import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
 import de.alpharogroup.message.system.application.models.send.api.ISendInformationModel;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 

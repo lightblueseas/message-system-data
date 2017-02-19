@@ -14,7 +14,7 @@ import de.alpharogroup.message.system.daos.MessageRecipientsDao;
 import de.alpharogroup.message.system.entities.MessageRecipients;
 import de.alpharogroup.message.system.entities.Messages;
 import de.alpharogroup.message.system.service.api.MessageRecipientsService;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Users;
 
 @Transactional
 @Service("messageRecipientsService")

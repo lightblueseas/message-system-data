@@ -9,7 +9,7 @@ import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.resource.system.domain.Resource;
 import de.alpharogroup.user.management.domain.Contactmethod;
-import de.alpharogroup.user.management.domain.User;
+import de.alpharogroup.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

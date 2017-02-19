@@ -7,7 +7,7 @@ import de.alpharogroup.db.service.api.BusinessService;
 import de.alpharogroup.message.system.application.models.send.api.IBaseMessageModel;
 import de.alpharogroup.message.system.entities.Messages;
 import de.alpharogroup.message.system.enums.MessageState;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Users;
 
 /**
  * The Interface MessagesService.

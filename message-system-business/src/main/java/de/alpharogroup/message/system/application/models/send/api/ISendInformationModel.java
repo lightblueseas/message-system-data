@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Users;
 
 /**
  * The interface ISendInformationModel provides information about the sender and the

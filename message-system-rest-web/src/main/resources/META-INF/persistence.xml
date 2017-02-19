@@ -12,18 +12,20 @@
 		<class>de.alpharogroup.address.book.entities.Zipcodes</class>
 				
 		<class>de.alpharogroup.resource.system.entities.Resources</class>
-		
+
 		<class>de.alpharogroup.user.management.entities.Contactmethods</class>
-		<class>de.alpharogroup.user.management.entities.Permissions</class>
 		<class>de.alpharogroup.user.management.entities.Recommendations</class>
-		<class>de.alpharogroup.user.management.entities.RelationPermissions</class>
-		<class>de.alpharogroup.user.management.entities.ResetPasswords</class>
 		<class>de.alpharogroup.user.management.entities.Robinsons</class>
-		<class>de.alpharogroup.user.management.entities.Roles</class>
 		<class>de.alpharogroup.user.management.entities.RuleViolations</class>
 		<class>de.alpharogroup.user.management.entities.UserDatas</class>
-		<class>de.alpharogroup.user.management.entities.Users</class>		
-		<class>de.alpharogroup.user.management.entities.UserCredits</class>		
+		<class>de.alpharogroup.user.management.entities.UserCredits</class>
+		
+		<class>de.alpharogroup.user.entities.Permissions</class>
+		<class>de.alpharogroup.user.entities.RelationPermissions</class>
+		<class>de.alpharogroup.user.entities.ResetPasswords</class>
+		<class>de.alpharogroup.user.entities.Roles</class>
+		<class>de.alpharogroup.user.entities.Users</class>
+		<class>de.alpharogroup.user.entities.UserTokens</class>		
 		
 		<class>de.alpharogroup.message.system.entities.Messages</class>
 		<class>de.alpharogroup.message.system.entities.MessageRecipients</class>

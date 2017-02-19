@@ -23,7 +23,7 @@ import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.message.system.factories.MessageSystemFactory;
 import de.alpharogroup.message.system.service.api.MessageRecipientsService;
 import de.alpharogroup.message.system.service.api.MessagesService;
-import de.alpharogroup.user.management.entities.Users;
+import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.management.service.api.UsersService;
 
 

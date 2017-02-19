@@ -14,6 +14,11 @@
 
 		<dependency>
 			<groupId>de.alpharogroup</groupId>
+			<artifactId>user-entities</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>de.alpharogroup</groupId>
 			<artifactId>user-management-entities</artifactId>
 		</dependency>
 

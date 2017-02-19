@@ -54,6 +54,12 @@
 		<!-- EXTERNAL LIBRARIES versions -->
 		<commons-email.version>1.4</commons-email.version>
 		<subethasmtp.version>3.1.7</subethasmtp.version>
+		<!-- USER-DATA versions -->
+		<user-data.version>${project.version}</user-data.version>
+		<user-entities.version>${user-data.version}</user-entities.version>
+		<user-business.version>${user-data.version}</user-business.version>
+		<user-domain.version>${user-data.version}</user-domain.version>
+		<user-rest-api.version>${user-data.version}</user-rest-api.version>
 		<!-- USER-MANAGEMENT-DATA versions -->
 		<user-management-data.version>${project.version}</user-management-data.version>
 		<user-management-entities.version>${user-management-data.version}</user-management-entities.version>
@@ -93,6 +99,30 @@
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>message-system-business</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<!-- USER-DATA DEPENDENCIES -->
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-entities</artifactId>
+				<version>${user-entities.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-business</artifactId>
+				<version>${user-business.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-domain</artifactId>
+				<version>${user-domain.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>user-rest-api</artifactId>
+				<version>${user-rest-api.version}</version>
 			</dependency>
 			<!-- USER-MANAGEMENT-DATA DEPENDENCIES -->
 			<dependency>
