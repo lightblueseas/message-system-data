@@ -1,0 +1,18 @@
+<message>
+<subject>
+Ανταπόκριση από το ${memberUsername}
+</subject>
+<content>
+Γεια σας ${recipientFullName},
+
+έχετε ενα νέο μήνυμα απο τον χρήστη ${memberUsername} στο γραμματοκιβώτιο σας:
+
+"${messagePart}"
+
+αναγγελθήτε στη προσωπική σας περιοχή και διαβάστε ολο το μήνυμα.
+
+Με φιλικούς χαιρετισμούς,
+
+η ${applicationDomainName}-ομάδα
+</content>
+</message>

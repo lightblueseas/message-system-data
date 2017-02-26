@@ -1,0 +1,20 @@
+<message>
+<subject>Profile recommendation</subject>
+<content>${memberUsername} recommends this profile to you:
+ 
+${profileData}
+${profileLink}
+
+Message from  ${memberUsername} to you:
+${invitationText} 
+
+Here you can see the profile from the member that recommend this profile:
+${senderProfileLink}
+
+You can sign up for free on this link:
+${signupLink}
+
+Cheers,
+
+your ${applicationDomainName}-team</content>
+</message>
