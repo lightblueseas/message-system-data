@@ -46,11 +46,11 @@ public class MessageRecipient extends BaseDomainObject<Integer> {
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The message attribute that references to the Entity class {@link de.alpharogroup.message.system.entities.Messages}.
+	 * The message attribute that references to the Entity class {@link Message}.
 	 */
 	private Message message;
 	/**
-	 * The recipient attribute that references to the Entity class {@link de.alpharogroup.user.management.entities.Users}.
+	 * The recipient attribute that references to the Entity class {@link User}.
 	 */
 	private User recipient;
 	/**
