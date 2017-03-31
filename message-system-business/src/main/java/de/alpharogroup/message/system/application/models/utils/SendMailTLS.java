@@ -45,30 +45,6 @@ import de.alpharogroup.lang.ClassExtensions;
 
 public class SendMailTLS {
 
-	public static void main(String[] args) throws Exception, MessagingException {
-
-		final String username = "error.flirteros@gmail.com";
-		String password;
-
-		password = decryptPassword();
-
-		SendEmail sender = EmailSendProperties.getGmailSender(username, password);
-
-		final EmailMessage emailMessage = new EmailMessage(sender.getSession());
-
-		EmailExtensions.setFromToEmailMessage("asterios.raptis@yahoo.gr", "Asterios Raptis",
-				EmailConstants.CHARSET_UTF8, emailMessage);
-		// Set recipient
-		EmailExtensions.addToRecipientToEmailMessage("asterios.raptis@gmx.net", "Asterios Raptis",
-				EmailConstants.CHARSET_UTF8, emailMessage);
-		// Set subject
-		emailMessage.setSubject("Testing Subject");
-		// Set content...
-		emailMessage.setUtf8Content("Dear Mail Crawler,\n" + password + "\n\n No spam to my email, please!"
-				+ "http://localhost:8180/member/profile/../../public/recommend?username=gina.wild");
-		sender.sendEmailMessage(emailMessage);
-	}
-
 	private static String decryptPassword() throws Exception {
 		Properties prop = EmailSendProperties.getEmailSendProperties();
 		String firstKey = prop.getProperty("post.send.first.key");
@@ -102,6 +78,30 @@ public class SendMailTLS {
 		WriteFileExtensions.writeStringToFile(
 				PathFinder.getRelativePath(PathFinder.getSrcMainResourcesDir(), "gmail.pw"), encryptor.encrypt(pw),
 				"UTF-8");
+	}
+
+	public static void main(String[] args) throws Exception, MessagingException {
+
+		final String username = "error.flirteros@gmail.com";
+		String password;
+
+		password = decryptPassword();
+
+		SendEmail sender = EmailSendProperties.getGmailSender(username, password);
+
+		final EmailMessage emailMessage = new EmailMessage(sender.getSession());
+
+		EmailExtensions.setFromToEmailMessage("asterios.raptis@yahoo.gr", "Asterios Raptis",
+				EmailConstants.CHARSET_UTF8, emailMessage);
+		// Set recipient
+		EmailExtensions.addToRecipientToEmailMessage("asterios.raptis@gmx.net", "Asterios Raptis",
+				EmailConstants.CHARSET_UTF8, emailMessage);
+		// Set subject
+		emailMessage.setSubject("Testing Subject");
+		// Set content...
+		emailMessage.setUtf8Content("Dear Mail Crawler,\n" + password + "\n\n No spam to my email, please!"
+				+ "http://localhost:8180/member/profile/../../public/recommend?username=gina.wild");
+		sender.sendEmailMessage(emailMessage);
 	}
 
 }
