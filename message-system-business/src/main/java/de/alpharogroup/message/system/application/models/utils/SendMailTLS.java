@@ -42,30 +42,29 @@ import de.alpharogroup.file.read.ReadFileExtensions;
 import de.alpharogroup.file.search.PathFinder;
 import de.alpharogroup.file.write.WriteFileExtensions;
 import de.alpharogroup.lang.ClassExtensions;
- 
+
 public class SendMailTLS {
- 
+
 	public static void main(String[] args) throws Exception, MessagingException {
- 
+
 		final String username = "error.flirteros@gmail.com";
 		String password;
-				
-		password = decryptPassword();	
- 
+
+		password = decryptPassword();
+
 		SendEmail sender = EmailSendProperties.getGmailSender(username, password);
-		
+
 		final EmailMessage emailMessage = new EmailMessage(sender.getSession());
 
 		EmailExtensions.setFromToEmailMessage("asterios.raptis@yahoo.gr", "Asterios Raptis",
 				EmailConstants.CHARSET_UTF8, emailMessage);
 		// Set recipient
-		EmailExtensions.addToRecipientToEmailMessage("asterios.raptis@gmx.net",
-				"Asterios Raptis", EmailConstants.CHARSET_UTF8, emailMessage);
+		EmailExtensions.addToRecipientToEmailMessage("asterios.raptis@gmx.net", "Asterios Raptis",
+				EmailConstants.CHARSET_UTF8, emailMessage);
 		// Set subject
 		emailMessage.setSubject("Testing Subject");
 		// Set content...
-		emailMessage.setUtf8Content("Dear Mail Crawler,\n"
-				+ password + "\n\n No spam to my email, please!"
+		emailMessage.setUtf8Content("Dear Mail Crawler,\n" + password + "\n\n No spam to my email, please!"
 				+ "http://localhost:8180/member/profile/../../public/recommend?username=gina.wild");
 		sender.sendEmailMessage(emailMessage);
 	}
@@ -75,15 +74,16 @@ public class SendMailTLS {
 		String firstKey = prop.getProperty("post.send.first.key");
 		String secondKey = prop.getProperty("post.send.second.key");
 		String thirdKey = prop.getProperty("post.send.third.key");
-				
+
 		InputStream is = ClassExtensions.getResourceAsStream("gmail.pw");
-		String encrypted = ReadFileExtensions.inputStream2String(is);		
-		
+		String encrypted = ReadFileExtensions.inputStream2String(is);
+
 		HexableDecryptor firstDecryptor = new HexableDecryptor(firstKey);
 		HexableDecryptor secondDecryptor = new HexableDecryptor(secondKey);
-		HexableDecryptor thirdDecryptor = new HexableDecryptor(thirdKey);		
-		ChainableDecryptor<String> decryptor = new ChainableStringDecryptor(thirdDecryptor, secondDecryptor, firstDecryptor);
-		
+		HexableDecryptor thirdDecryptor = new HexableDecryptor(thirdKey);
+		ChainableDecryptor<String> decryptor = new ChainableStringDecryptor(thirdDecryptor, secondDecryptor,
+				firstDecryptor);
+
 		return decryptor.decrypt(encrypted);
 	}
 
@@ -92,14 +92,16 @@ public class SendMailTLS {
 		String firstKey = prop.getProperty("post.send.first.key");
 		String secondKey = prop.getProperty("post.send.second.key");
 		String thirdKey = prop.getProperty("post.send.third.key");
-				
+
 		final HexableEncryptor firstEncryptor = new HexableEncryptor(firstKey);
 		final HexableEncryptor secondEncryptor = new HexableEncryptor(secondKey);
 		final HexableEncryptor thirdEncryptor = new HexableEncryptor(thirdKey);
-		final ChainableStringEncryptor encryptor = new ChainableStringEncryptor(firstEncryptor,
-			secondEncryptor, thirdEncryptor);
-		
-		WriteFileExtensions.writeStringToFile(PathFinder.getRelativePath(PathFinder.getSrcMainResourcesDir(), "gmail.pw"), encryptor.encrypt(pw), "UTF-8");
+		final ChainableStringEncryptor encryptor = new ChainableStringEncryptor(firstEncryptor, secondEncryptor,
+				thirdEncryptor);
+
+		WriteFileExtensions.writeStringToFile(
+				PathFinder.getRelativePath(PathFinder.getSrcMainResourcesDir(), "gmail.pw"), encryptor.encrypt(pw),
+				"UTF-8");
 	}
 
 }

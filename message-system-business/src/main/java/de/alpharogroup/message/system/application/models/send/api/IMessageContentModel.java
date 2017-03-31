@@ -44,7 +44,8 @@ public interface IMessageContentModel extends Serializable, Xmlable {
 	/**
 	 * Sets the subject.
 	 *
-	 * @param subject the new subject
+	 * @param subject
+	 *            the new subject
 	 */
 	void setSubject(String subject);
 
@@ -58,21 +59,23 @@ public interface IMessageContentModel extends Serializable, Xmlable {
 	/**
 	 * Sets the message content.
 	 *
-	 * @param messageContent the new message content
+	 * @param messageContent
+	 *            the new message content
 	 */
 	void setContent(String messageContent);
-	
+
 	/**
 	 * Gets the locale for the message content.
 	 *
 	 * @return the locale for the message content.
 	 */
 	Locale getLocale();
-	
+
 	/**
 	 * Sets the locale for the message content.
 	 *
-	 * @param locale the locale for the message content.
+	 * @param locale
+	 *            the locale for the message content.
 	 */
 	void setLocale(Locale locale);
 

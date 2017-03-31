@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
+import de.alpharogroup.xml.XmlExtensions;
+import de.alpharogroup.xml.api.Transformable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -35,9 +38,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import de.alpharogroup.message.system.application.models.send.api.IMessageContentModel;
-import de.alpharogroup.xml.XmlExtensions;
-import de.alpharogroup.xml.api.Transformable;
 
 @Getter
 @Setter
@@ -62,9 +62,9 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 	/** The locale for the message content. */
 	private Locale locale;
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toXml() {
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
@@ -73,9 +73,9 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 		return xmlString;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public IMessageContentModel toObject(String xml) {
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();

@@ -38,7 +38,6 @@ import de.alpharogroup.service.domain.AbstractDomainService;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Transactional
 @Service("messageRecipientDomainService")
 public class MessageRecipientDomainService extends
@@ -61,6 +60,7 @@ public class MessageRecipientDomainService extends
 	public void setMessageRecipientsDao(final MessageRecipientsDao messageRecipientsDao) {
 		setDao(messageRecipientsDao);
 	}
+
 	/**
 	 * Sets the specific {@link MessageRecipientsMapper}.
 	 *

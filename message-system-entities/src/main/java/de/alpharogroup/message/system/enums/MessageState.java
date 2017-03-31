@@ -30,13 +30,13 @@ package de.alpharogroup.message.system.enums;
 public enum MessageState {
 
 	/** The signed. */
-	SIGNED,	
+	SIGNED,
 	/** The contacted. */
-	CONTACTED,	
+	CONTACTED,
 	/** The expelled. */
-	EXPELLED,	
+	EXPELLED,
 	/** The unreplied. */
-	UNREPLIED,	
+	UNREPLIED,
 	/** The deleted. */
 	DELETED;
 

@@ -26,7 +26,6 @@ package de.alpharogroup.message.system.application.models.send.api;
 
 import java.io.Serializable;
 
-
 public interface ISendMessageModel extends Serializable {
 
 	IMessageContentModel getMessageContentModel();
@@ -35,7 +34,6 @@ public interface ISendMessageModel extends Serializable {
 
 	void setMessageContentModel(IMessageContentModel messageModel);
 
-	void setSendInformationModel(
-			ISendInformationModel sendInformationModel);
+	void setSendInformationModel(ISendInformationModel sendInformationModel);
 
 }

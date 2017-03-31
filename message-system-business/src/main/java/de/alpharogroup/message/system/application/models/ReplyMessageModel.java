@@ -36,7 +36,7 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The parent of the reply message. */
 	private Messages parent;
 
@@ -76,7 +76,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	/**
 	 * Sets the parent.
 	 *
-	 * @param parent the new parent
+	 * @param parent
+	 *            the new parent
 	 */
 	public void setParent(Messages parent) {
 		this.parent = parent;
@@ -102,19 +103,18 @@ public class ReplyMessageModel extends BaseMessageModel {
 		this.responseSubject = responseSubject;
 	}
 
-
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toXml() {
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ReplyMessageModel toObject(String xml) {
 		ReplyMessageModel model = XmlExtensions.toObjectWithXStream(xml);

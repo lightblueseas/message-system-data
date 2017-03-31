@@ -31,7 +31,6 @@ import java.util.Properties;
 
 import de.alpharogroup.db.init.AbstractDatabaseInitialization;
 
-
 public class DatabaseInitialization extends AbstractDatabaseInitialization {
 
 	public DatabaseInitialization(Properties databaseProperties) {

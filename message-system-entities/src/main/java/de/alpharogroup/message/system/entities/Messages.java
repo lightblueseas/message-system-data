@@ -42,10 +42,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -55,8 +51,11 @@ import de.alpharogroup.db.entity.BaseEntity;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.resource.system.entities.Resources;
-import de.alpharogroup.user.management.entities.Contactmethods;
 import de.alpharogroup.user.entities.Users;
+import de.alpharogroup.user.management.entities.Contactmethods;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * The Entity class {@link Messages } is keeping the information for the
@@ -65,14 +64,14 @@ import de.alpharogroup.user.entities.Users;
 @Entity
 @Table(name = "messages")
 @TypeDefs({
-		@TypeDef(name = "messagetypeConverter", typeClass = de.alpharogroup.db.postgres.usertype.PGEnumUserType.class, parameters = { @Parameter(name = "enumClassName", value = "de.alpharogroup.message.system.enums.MessageType") }),
-		@TypeDef(name = "stateConverter", typeClass = de.alpharogroup.db.postgres.usertype.PGEnumUserType.class, parameters = { @Parameter(name = "enumClassName", value = "de.alpharogroup.message.system.enums.MessageState") }) })
+		@TypeDef(name = "messagetypeConverter", typeClass = de.alpharogroup.db.postgres.usertype.PGEnumUserType.class, parameters = {
+				@Parameter(name = "enumClassName", value = "de.alpharogroup.message.system.enums.MessageType") }),
+		@TypeDef(name = "stateConverter", typeClass = de.alpharogroup.db.postgres.usertype.PGEnumUserType.class, parameters = {
+				@Parameter(name = "enumClassName", value = "de.alpharogroup.message.system.enums.MessageState") }) })
 @Getter
 @Setter
 @NoArgsConstructor
-public class Messages 
-extends BaseEntity<Integer>
-implements Cloneable {
+public class Messages extends BaseEntity<Integer> implements Cloneable {
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = 920286633675636537L;
@@ -80,17 +79,17 @@ implements Cloneable {
 	 * The parent of this message can be null if its the root message.
 	 **/
 	@OneToOne
-	@JoinColumn(name="parent", foreignKey = @ForeignKey(name = "FK_PARENT_MESSAGE_ID"))
+	@JoinColumn(name = "parent", foreignKey = @ForeignKey(name = "FK_PARENT_MESSAGE_ID"))
 	private Messages parent;
 	/**
-	 * A flag that indicates that the message is deleted from the sender but will not really deleted
-	 * because of references to other messages.
+	 * A flag that indicates that the message is deleted from the sender but
+	 * will not really deleted because of references to other messages.
 	 */
 	@Column(name = "sender_deleted_flag")
 	private Boolean senderDeletedFlag;
 	/**
-	 *  A flag that indicates that the message is deleted from the recipient but will not really deleted
-	 * because of references to other messages.
+	 * A flag that indicates that the message is deleted from the recipient but
+	 * will not really deleted because of references to other messages.
 	 */
 	@Column(name = "recipient_deleted_flag")
 	private Boolean recipientDeletedFlag;
@@ -98,10 +97,10 @@ implements Cloneable {
 	@Column(name = "failed2sentemail")
 	private Boolean failed2sentemail;
 	/** The folder of the message. */
-	@Column(name = "folder",length = 64)
+	@Column(name = "folder", length = 64)
 	private String folder;
 	/** The content of the message. */
-	@Column(name = "messageContent",length = 21845)
+	@Column(name = "messageContent", length = 21845)
 	private String messageContent;
 	/** An enum for the message type. */
 	@Enumerated(EnumType.STRING)
@@ -134,13 +133,15 @@ implements Cloneable {
 	@Type(type = "stateConverter")
 	private MessageState state;
 	/** The subject of the message. */
-	@Column(name = "subject",length = 1000)
+	@Column(name = "subject", length = 1000)
 	private String subject;
 	/** The attachments of the message. */
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "message_attachments", joinColumns = { @JoinColumn(name = "message_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "resource_id", referencedColumnName = "id") })
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "message_attachments", joinColumns = {
+			@JoinColumn(name = "message_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "resource_id", referencedColumnName = "id") })
 	private Set<Resources> attachments = new HashSet<Resources>();
-	
+
 	/**
 	 * Checks the spam flag.
 	 *
@@ -149,5 +150,5 @@ implements Cloneable {
 	public boolean isSpamFlag() {
 		return getSpamFlag() != null && getSpamFlag().booleanValue();
 	}
-	
+
 }

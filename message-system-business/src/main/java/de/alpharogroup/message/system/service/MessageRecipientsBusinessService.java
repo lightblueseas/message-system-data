@@ -42,7 +42,8 @@ import de.alpharogroup.user.entities.Users;
 
 @Transactional
 @Service("messageRecipientsService")
-public class MessageRecipientsBusinessService extends AbstractBusinessService<MessageRecipients, Integer, MessageRecipientsDao> implements MessageRecipientsService {
+public class MessageRecipientsBusinessService extends
+		AbstractBusinessService<MessageRecipients, Integer, MessageRecipientsDao> implements MessageRecipientsService {
 
 	/**
 	 *
@@ -56,20 +57,16 @@ public class MessageRecipientsBusinessService extends AbstractBusinessService<Me
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public boolean deleteMessageRecipient(final Users recipient,
-			final Messages message) {
-		final String hqlSelectString =
-				"select distinct mr from " + MessageRecipients.class.getSimpleName() + " mr " +
-				"where mr.recipient=:recipient " +
-				"and mr.message=:message";
+	public boolean deleteMessageRecipient(final Users recipient, final Messages message) {
+		final String hqlSelectString = "select distinct mr from " + MessageRecipients.class.getSimpleName() + " mr "
+				+ "where mr.recipient=:recipient " + "and mr.message=:message";
 
 		final Query query = getQuery(hqlSelectString);
 		query.setParameter("recipient", recipient);
 		query.setParameter("message", message);
 		final List<MessageRecipients> toDel = query.getResultList();
 		if (toDel != null && !toDel.isEmpty()) {
-			for (final Iterator<MessageRecipients> iterator = toDel.iterator(); iterator
-					.hasNext();) {
+			for (final Iterator<MessageRecipients> iterator = toDel.iterator(); iterator.hasNext();) {
 				MessageRecipients messageRecipient = iterator.next();
 				messageRecipient.setMessage(null);
 				messageRecipient.setRecipient(null);

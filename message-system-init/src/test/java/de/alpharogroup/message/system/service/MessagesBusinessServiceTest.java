@@ -54,10 +54,10 @@ import de.alpharogroup.user.entities.Roles;
 import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.management.enums.GenderType;
 import de.alpharogroup.user.management.factories.UserManagementModelFactory;
-import de.alpharogroup.user.service.api.RolesService;
 import de.alpharogroup.user.management.service.api.UsersManagementService;
 import de.alpharogroup.user.management.sign.up.SignUpUserResult;
 import de.alpharogroup.user.management.sign.up.UserModel;
+import de.alpharogroup.user.service.api.RolesService;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
 public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTests {
@@ -70,7 +70,7 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 	@Autowired
 	private AddressesService addressesService;
 
-	@Test(enabled=false)
+	@Test(enabled = false)
 	public void testSaveMessageWithRecipients() {
 		IMessageContentModel messageModel = new MessageContentModel();
 		ISendInformationModel sendInformationModel = new SendInformationModel();
@@ -121,11 +121,10 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 		System.out.println(replies);
 	}
 
-
 	public Set<Roles> createRolesSet() {
 		final List<Roles> r = rolesService.findAll();
 		final Set<Roles> roles = new HashSet<>();
-		if(r != null && !r.isEmpty()) {
+		if (r != null && !r.isEmpty()) {
 			roles.add(r.get(0));
 		} else {
 			final Roles role = rolesService.createAndSaveRole("ADMIN", "The admin role");
@@ -137,34 +136,21 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 	public Users getUser(final String firstname, final String lastname, final String email, final String username) {
 
 		final UserManagementModelFactory userManagementModelFactory = UserManagementModelFactory.getInstance();
-		final UserModel userModel = userManagementModelFactory.newUserModel(
-				lastname,
-				CreateDateExtensions.newDate(1974, 8, 28),
-				firstname,
-				GenderType.MALE,
-				"127.0.0.1",
-				lastname,
-				Locale.GERMAN,
-				"01721745676",
-				"032325444444",
-				"032325444445",
-				addressesService.get(30224)); // Ludwigsburg
+		final UserModel userModel = userManagementModelFactory.newUserModel(lastname,
+				CreateDateExtensions.newDate(1974, 8, 28), firstname, GenderType.MALE, "127.0.0.1", lastname,
+				Locale.GERMAN, "01721745676", "032325444444", "032325444445", addressesService.get(30224)); // Ludwigsburg
 
-		final UsernameSignUpModel usernameSignUpModel = userManagementModelFactory.newUsernameSignupModel(
-				email,
-				"xxx",
-				"xxx",
-				Boolean.TRUE,
-				username);
+		final UsernameSignUpModel usernameSignUpModel = userManagementModelFactory.newUsernameSignupModel(email, "xxx",
+				"xxx", Boolean.TRUE, username);
 
 		final Set<Roles> roles = createRolesSet();
 		final SignUpUserResult result = userManagementService.signUpUser(usernameSignUpModel, roles, userModel);
-		if(result.getUser() == null){
+		if (result.getUser() == null) {
 			final ValidationErrors errors = result.getValidationErrors();
-			if(errors.equals(ValidationErrors.EMAIL_EXISTS_ERROR)){
+			if (errors.equals(ValidationErrors.EMAIL_EXISTS_ERROR)) {
 				return userManagementService.findUserWithEmailOrUsername(email);
 			}
-			if(errors.equals(ValidationErrors.USERNAME_EXISTS_ERROR)){
+			if (errors.equals(ValidationErrors.USERNAME_EXISTS_ERROR)) {
 				return userManagementService.findUserWithEmailOrUsername(username);
 			}
 		}

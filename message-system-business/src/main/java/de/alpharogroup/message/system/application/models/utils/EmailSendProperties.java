@@ -43,22 +43,21 @@ public final class EmailSendProperties {
 		gmailProperties.put("mail.smtp.port", "587");
 		return gmailProperties;
 	}
-	
+
 	public static Properties getEmailSendProperties() throws IOException {
 		Properties properties = PropertiesExtensions.loadProperties("emailsender.properties");
 		return properties;
-	}	
+	}
 
 	public static SendEmail getGmailSender(final String username, final String password)
 			throws IOException, MessagingException {
 		Properties properties = EmailSendProperties.getGmailProperties();
-		
-		SendEmail sender = new SendEmail(properties,
-				  new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
-					}
-				  });
-		return sender;		
+
+		SendEmail sender = new SendEmail(properties, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		return sender;
 	}
 }

@@ -49,8 +49,7 @@ public interface ServiceLocator {
 	 * @param messageRecipientsService
 	 *            the new message recipients service
 	 */
-	void setMessageRecipientsService(
-			MessageRecipientsService messageRecipientsService);
+	void setMessageRecipientsService(MessageRecipientsService messageRecipientsService);
 
 	/**
 	 * Sets the messages service.

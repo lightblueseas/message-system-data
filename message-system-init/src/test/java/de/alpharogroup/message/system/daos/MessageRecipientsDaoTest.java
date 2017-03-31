@@ -38,7 +38,7 @@ public class MessageRecipientsDaoTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	MessageRecipientsDao messageRecipientsDao;
 
-	@Test(enabled=false)
+	@Test(enabled = false)
 	public void testFindAll() {
 		final List<MessageRecipients> all = messageRecipientsDao.findAll();
 		System.out.println(all);

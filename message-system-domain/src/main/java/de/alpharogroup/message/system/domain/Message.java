@@ -32,8 +32,8 @@ import de.alpharogroup.domain.BaseDomainObject;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 import de.alpharogroup.resource.system.domain.Resource;
-import de.alpharogroup.user.management.domain.Contactmethod;
 import de.alpharogroup.user.domain.User;
+import de.alpharogroup.user.management.domain.Contactmethod;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -44,8 +44,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(callSuper=true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -58,13 +58,13 @@ public class Message extends BaseDomainObject<Integer> {
 	 **/
 	private Message parent;
 	/**
-	 * A flag that indicates that the message is deleted from the sender but will not really deleted
-	 * because of references to other messages.
+	 * A flag that indicates that the message is deleted from the sender but
+	 * will not really deleted because of references to other messages.
 	 */
 	private Boolean senderDeletedFlag;
 	/**
-	 *  A flag that indicates that the message is deleted from the recipient but will not really deleted
-	 * because of references to other messages.
+	 * A flag that indicates that the message is deleted from the recipient but
+	 * will not really deleted because of references to other messages.
 	 */
 	private Boolean recipientDeletedFlag;
 	/** A flag that indicates that the message could not be sent. */

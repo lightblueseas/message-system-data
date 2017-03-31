@@ -24,7 +24,6 @@
  */
 package de.alpharogroup.message.system.application.models.send.api;
 
-import de.alpharogroup.message.system.application.models.send.api.ISendMessageModel;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 
@@ -47,14 +46,16 @@ public interface IBaseMessageModel extends ISendMessageModel {
 	/**
 	 * Sets the message state.
 	 *
-	 * @param messageState the new message state
+	 * @param messageState
+	 *            the new message state
 	 */
 	void setMessageState(MessageState messageState);
 
 	/**
 	 * Sets the message type.
 	 *
-	 * @param messageType the new message type
+	 * @param messageType
+	 *            the new message type
 	 */
 	void setMessageType(MessageType messageType);
 

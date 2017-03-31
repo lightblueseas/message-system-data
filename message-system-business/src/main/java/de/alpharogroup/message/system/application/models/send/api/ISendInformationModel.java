@@ -31,11 +31,10 @@ import java.util.Set;
 import de.alpharogroup.user.entities.Users;
 
 /**
- * The interface ISendInformationModel provides information about the sender and the
- * recipients of a message.
+ * The interface ISendInformationModel provides information about the sender and
+ * the recipients of a message.
  */
 public interface ISendInformationModel extends Serializable {
-
 
 	/**
 	 * Gets the recipients.
@@ -61,35 +60,40 @@ public interface ISendInformationModel extends Serializable {
 	/**
 	 * Sets the recipients.
 	 *
-	 * @param recipients the new recipients
+	 * @param recipients
+	 *            the new recipients
 	 */
 	void setRecipients(Set<Users> recipients);
 
 	/**
 	 * Sets the sender.
 	 *
-	 * @param sender the new sender
+	 * @param sender
+	 *            the new sender
 	 */
 	void setSender(Users sender);
 
 	/**
 	 * Sets the sent date.
 	 *
-	 * @param sentDate the new sent date
+	 * @param sentDate
+	 *            the new sent date
 	 */
 	void setSentDate(Date sentDate);
-	
+
 	/**
 	 * Adds a recipient to the recipients.
 	 *
-	 * @param recipient the recipient to add.
+	 * @param recipient
+	 *            the recipient to add.
 	 */
 	void addRecipient(Users recipient);
-	
+
 	/**
 	 * Removes a recipient from the recipients.
 	 *
-	 * @param recipient the recipient to remove.
+	 * @param recipient
+	 *            the recipient to remove.
 	 * @return true, if successful
 	 */
 	boolean removeRecipient(Users recipient);

@@ -28,6 +28,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.alpharogroup.message.system.application.models.send.api.ISendInformationModel;
+import de.alpharogroup.user.entities.Users;
+import de.alpharogroup.xml.XmlExtensions;
+import de.alpharogroup.xml.api.Transformable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -36,10 +40,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Singular;
 import lombok.ToString;
-import de.alpharogroup.message.system.application.models.send.api.ISendInformationModel;
-import de.alpharogroup.user.entities.Users;
-import de.alpharogroup.xml.XmlExtensions;
-import de.alpharogroup.xml.api.Transformable;
 
 /**
  * The Class SendInformationModel captures information about the sender and the
@@ -80,26 +80,26 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
 		recipients.add(recipient);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean removeRecipient(Users recipient) {
 		return recipients.remove(recipient);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toXml() {
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ISendInformationModel toObject(String xml) {
 		ISendInformationModel model = XmlExtensions.toObjectWithXStream(xml);

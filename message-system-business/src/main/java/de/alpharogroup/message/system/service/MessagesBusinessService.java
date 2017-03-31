@@ -50,10 +50,10 @@ import de.alpharogroup.message.system.service.api.MessagesService;
 import de.alpharogroup.user.entities.Users;
 import de.alpharogroup.user.management.service.api.UsersService;
 
-
 @Transactional
 @Service("messagesService")
-public class MessagesBusinessService extends AbstractBusinessService<Messages, Integer, MessagesDao> implements MessagesService {
+public class MessagesBusinessService extends AbstractBusinessService<Messages, Integer, MessagesDao>
+		implements MessagesService {
 
 	/**
 	 *
@@ -65,6 +65,7 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	/** The Users service. */
 	@Autowired
 	private UsersService usersService;
+
 	@Autowired
 	public void setMessagesDao(final MessagesDao messagesDao) {
 		setDao(messagesDao);
@@ -73,9 +74,7 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Messages> findMessagesChildren(final Messages parent) {
-		final String hqlString =
-				"select distinct m "
-				+ "from " + Messages.class.getSimpleName() + " as m "
+		final String hqlString = "select distinct m " + "from " + Messages.class.getSimpleName() + " as m "
 				+ "where m.parent=:parent";
 		final Query query = getQuery(hqlString);
 		query.setParameter("parent", parent);
@@ -110,11 +109,9 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Messages> findMessages(final Users user) {
-		final String hqlString =
-				"select distinct mr.message "
-				+ "from " + MessageRecipients.class.getSimpleName() + " as mr "
-				+ "where mr.recipient=:user " +
-				"and mr.message.recipientDeletedFlag=:recipientDeletedFlag ";
+		final String hqlString = "select distinct mr.message " + "from " + MessageRecipients.class.getSimpleName()
+				+ " as mr " + "where mr.recipient=:user "
+				+ "and mr.message.recipientDeletedFlag=:recipientDeletedFlag ";
 		final Query query = getQuery(hqlString);
 		query.setParameter("user", user);
 		query.setParameter("recipientDeletedFlag", Boolean.FALSE);
@@ -128,12 +125,9 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Messages> findMessages(final Users user, final MessageState state) {
-		final String hqlString =
-				"select distinct mr.message "
-				+ "from " + MessageRecipients.class.getSimpleName() + " as mr "
-				+ "where mr.recipient=:user " +
-				"and mr.message.state=:state " +
-				"and mr.message.recipientDeletedFlag=:recipientDeletedFlag ";
+		final String hqlString = "select distinct mr.message " + "from " + MessageRecipients.class.getSimpleName()
+				+ " as mr " + "where mr.recipient=:user " + "and mr.message.state=:state "
+				+ "and mr.message.recipientDeletedFlag=:recipientDeletedFlag ";
 		final Query query = getQuery(hqlString);
 		query.setParameter("user", user);
 		query.setParameter("state", state);
@@ -148,11 +142,8 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Messages> findSentMessages(final Users user) {
-		final String hqlString =
-				"select distinct m "
-				+ "from " + Messages.class.getSimpleName() + " as m "
-				+ "where m.sender=:user " +
-				"and m.senderDeletedFlag=:senderDeletedFlag";
+		final String hqlString = "select distinct m " + "from " + Messages.class.getSimpleName() + " as m "
+				+ "where m.sender=:user " + "and m.senderDeletedFlag=:senderDeletedFlag";
 		final Query query = getQuery(hqlString);
 		query.setParameter("user", user);
 		query.setParameter("senderDeletedFlag", Boolean.FALSE);
@@ -166,12 +157,8 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Messages> findReplyMessages(final Users user) {
-		final String hqlString =
-				"select distinct m "
-				+ "from " + Messages.class.getSimpleName() + " as m "
-				+ "where m.sender=:user "
-				+ "and m.parent is not null "
-				+ "and m.messagetype=:messagetype";
+		final String hqlString = "select distinct m " + "from " + Messages.class.getSimpleName() + " as m "
+				+ "where m.sender=:user " + "and m.parent is not null " + "and m.messagetype=:messagetype";
 		final Query query = getQuery(hqlString);
 		query.setParameter("user", user);
 		query.setParameter("messagetype", MessageType.REPLY);
@@ -179,22 +166,24 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 		return messages;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Messages saveMessageWithRecipients(final IBaseMessageModel model) {
-		if(model.getSendInformationModel().getSender() == null) {
-			throw new IllegalArgumentException("Message should have a Sender. Currently Sender is null. Sender should not be null.");
+		if (model.getSendInformationModel().getSender() == null) {
+			throw new IllegalArgumentException(
+					"Message should have a Sender. Currently Sender is null. Sender should not be null.");
 		}
-		if(model.getSendInformationModel().getRecipients() == null || model.getSendInformationModel().getRecipients().isEmpty()) {
-			throw new IllegalArgumentException("Message should have recipients. Currently recipients is null or empty. At least one recipient should be set.");
+		if (model.getSendInformationModel().getRecipients() == null
+				|| model.getSendInformationModel().getRecipients().isEmpty()) {
+			throw new IllegalArgumentException(
+					"Message should have recipients. Currently recipients is null or empty. At least one recipient should be set.");
 		}
 		// Create a messages object from the given model...
 		Messages message = MessageModelConverter.createMessage(model);
-		// Save the created message object so give opportunity to save the recipients from the message...
+		// Save the created message object so give opportunity to save the
+		// recipients from the message...
 		message = merge(message);
 		// Get all recipients from the model...
 		final Set<Users> recipients = model.getSendInformationModel().getRecipients();
@@ -202,12 +191,10 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 		for (Users recipient : recipients) {
 			recipient = usersService.get(recipient.getId());
 			// Create association between message and recipient...
-			final MessageRecipients messageRecipient = MessageSystemFactory
-					.getInstance().newMessageRecipients(message,
-							recipient);
+			final MessageRecipients messageRecipient = MessageSystemFactory.getInstance().newMessageRecipients(message,
+					recipient);
 			// Save the association to the database...
-			messageRecipientsService
-					.merge(messageRecipient);
+			messageRecipientsService.merge(messageRecipient);
 		}
 		// Update the message and return it...
 		return merge(message);
@@ -219,13 +206,12 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	@SuppressWarnings("unchecked")
 	public Set<Users> getRecipients(final Messages message) {
-		final String hqlString = "select mr.recipient " +
-				"from " + MessageRecipients.class.getSimpleName() + " mr " +
-				"where mr.message=:message";
+		final String hqlString = "select mr.recipient " + "from " + MessageRecipients.class.getSimpleName() + " mr "
+				+ "where mr.message=:message";
 		final Query query = getQuery(hqlString);
 		query.setParameter("message", message);
 		final List<Users> recipients = query.getResultList();
-		if(recipients != null && !recipients.isEmpty()){
+		if (recipients != null && !recipients.isEmpty()) {
 			return new HashSet<Users>(recipients);
 		}
 		return null;
@@ -237,7 +223,7 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Override
 	public boolean isRecipientFrom(final Messages message, final Users user) {
 		final Set<Users> recipients = getRecipients(message);
-		if(recipients != null && recipients.contains(user)){
+		if (recipients != null && recipients.contains(user)) {
 			return true;
 		}
 		return false;
@@ -247,8 +233,7 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 		return messageRecipientsService;
 	}
 
-	public void setMessageRecipientsService(
-			final MessageRecipientsService messageRecipientsService) {
+	public void setMessageRecipientsService(final MessageRecipientsService messageRecipientsService) {
 		this.messageRecipientsService = messageRecipientsService;
 	}
 

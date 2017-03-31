@@ -38,8 +38,7 @@ public class MessagesDaoTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private MessagesDao messagesDao;
 
-
-	@Test(enabled=false)
+	@Test(enabled = false)
 	public void testFindAll() {
 		final List<Messages> all = messagesDao.findAll();
 		System.out.println(all);

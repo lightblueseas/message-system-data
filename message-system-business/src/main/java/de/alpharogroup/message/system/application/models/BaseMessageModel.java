@@ -39,57 +39,57 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * The serialVersionUID.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The message state. */
 	private MessageState messageState;
-	
+
 	/** The message type. */
 	private MessageType messageType;
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public MessageState getMessageState() {
 		return messageState;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public MessageType getMessageType() {
 		return messageType;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setMessageState(MessageState messageState) {
 		this.messageState = messageState;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setMessageType(MessageType messageType) {
 		this.messageType = messageType;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String toXml() {
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public BaseMessageModel toObject(String xml) {
 		BaseMessageModel model = XmlExtensions.toObjectWithXStream(xml);

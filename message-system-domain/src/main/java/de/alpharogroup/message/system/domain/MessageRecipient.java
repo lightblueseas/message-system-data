@@ -25,8 +25,8 @@
 package de.alpharogroup.message.system.domain;
 
 import de.alpharogroup.domain.BaseDomainObject;
-import de.alpharogroup.user.management.domain.Contactmethod;
 import de.alpharogroup.user.domain.User;
+import de.alpharogroup.user.management.domain.Contactmethod;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -37,8 +37,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString(callSuper=true)
-@EqualsAndHashCode(callSuper=true)
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -46,7 +46,8 @@ public class MessageRecipient extends BaseDomainObject<Integer> {
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The message attribute that references to the Entity class {@link Message}.
+	 * The message attribute that references to the Entity class
+	 * {@link Message}.
 	 */
 	private Message message;
 	/**
