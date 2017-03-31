@@ -37,6 +37,14 @@ import de.alpharogroup.user.entities.Users;
 public interface ISendInformationModel extends Serializable {
 
 	/**
+	 * Adds a recipient to the recipients.
+	 *
+	 * @param recipient
+	 *            the recipient to add.
+	 */
+	void addRecipient(Users recipient);
+
+	/**
 	 * Gets the recipients.
 	 *
 	 * @return the recipients
@@ -56,6 +64,15 @@ public interface ISendInformationModel extends Serializable {
 	 * @return the sent date
 	 */
 	Date getSentDate();
+
+	/**
+	 * Removes a recipient from the recipients.
+	 *
+	 * @param recipient
+	 *            the recipient to remove.
+	 * @return true, if successful
+	 */
+	boolean removeRecipient(Users recipient);
 
 	/**
 	 * Sets the recipients.
@@ -80,22 +97,5 @@ public interface ISendInformationModel extends Serializable {
 	 *            the new sent date
 	 */
 	void setSentDate(Date sentDate);
-
-	/**
-	 * Adds a recipient to the recipients.
-	 *
-	 * @param recipient
-	 *            the recipient to add.
-	 */
-	void addRecipient(Users recipient);
-
-	/**
-	 * Removes a recipient from the recipients.
-	 *
-	 * @param recipient
-	 *            the recipient to remove.
-	 * @return true, if successful
-	 */
-	boolean removeRecipient(Users recipient);
 
 }

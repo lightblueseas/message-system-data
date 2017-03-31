@@ -66,21 +66,21 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public IMessageContentModel toObject(String xml) {
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
 		aliases.put("message", MessageContentModel.class);
-		String xmlString = XmlExtensions.toXmlWithXStream(this, aliases);
-		return xmlString;
+		return XmlExtensions.toObjectWithXStream(xml, aliases);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IMessageContentModel toObject(String xml) {
+	public String toXml() {
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
 		aliases.put("message", MessageContentModel.class);
-		return XmlExtensions.toObjectWithXStream(xml, aliases);
+		String xmlString = XmlExtensions.toXmlWithXStream(this, aliases);
+		return xmlString;
 	}
 
 }

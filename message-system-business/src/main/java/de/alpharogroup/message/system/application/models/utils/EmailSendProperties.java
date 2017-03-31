@@ -35,6 +35,11 @@ import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 
 public final class EmailSendProperties {
 
+	public static Properties getEmailSendProperties() throws IOException {
+		Properties properties = PropertiesExtensions.loadProperties("emailsender.properties");
+		return properties;
+	}
+
 	public static Properties getGmailProperties() {
 		Properties gmailProperties = new Properties();
 		gmailProperties.put("mail.smtp.auth", "true");
@@ -42,11 +47,6 @@ public final class EmailSendProperties {
 		gmailProperties.put("mail.smtp.host", "smtp.gmail.com");
 		gmailProperties.put("mail.smtp.port", "587");
 		return gmailProperties;
-	}
-
-	public static Properties getEmailSendProperties() throws IOException {
-		Properties properties = PropertiesExtensions.loadProperties("emailsender.properties");
-		return properties;
 	}
 
 	public static SendEmail getGmailSender(final String username, final String password)

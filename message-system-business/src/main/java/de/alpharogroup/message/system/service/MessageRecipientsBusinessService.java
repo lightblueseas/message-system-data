@@ -50,11 +50,6 @@ public class MessageRecipientsBusinessService extends
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Autowired
-	public void setMessageRecipientsDao(final MessageRecipientsDao messageRecipientsDao) {
-		setDao(messageRecipientsDao);
-	}
-
 	@Override
 	@SuppressWarnings("unchecked")
 	public boolean deleteMessageRecipient(final Users recipient, final Messages message) {
@@ -76,5 +71,10 @@ public class MessageRecipientsBusinessService extends
 			return true;
 		}
 		return false;
+	}
+
+	@Autowired
+	public void setMessageRecipientsDao(final MessageRecipientsDao messageRecipientsDao) {
+		setDao(messageRecipientsDao);
 	}
 }

@@ -91,25 +91,6 @@ public class MessageComposer {
 	}
 
 	/**
-	 * Gets the xml mail template name from the given String and Locale.
-	 *
-	 * @param xmlMailTemplateName
-	 *            the xml mail template name
-	 * @param locale
-	 *            the locale
-	 * @param withCountry
-	 *            the with country
-	 * @return the xml mail template name
-	 */
-	public static String getXmlMailTemplateName(String xmlMailTemplateName, Locale locale, boolean withCountry) {
-		StringBuilder localizedName = new StringBuilder();
-		localizedName.append(xmlMailTemplateName);
-		localizedName.append(LocaleExtensions.getLocaleFileSuffix(locale, withCountry));
-		localizedName.append(".xml");
-		return localizedName.toString().trim();
-	}
-
-	/**
 	 * Gets the email template as a Message Model that contains the velocity
 	 * templates.
 	 *
@@ -127,6 +108,25 @@ public class MessageComposer {
 		String xmlString = ReadFileExtensions.inputStream2String(is);
 		IMessageContentModel messageModel = new MessageContentModel().toObject(xmlString);
 		return messageModel;
+	}
+
+	/**
+	 * Gets the xml mail template name from the given String and Locale.
+	 *
+	 * @param xmlMailTemplateName
+	 *            the xml mail template name
+	 * @param locale
+	 *            the locale
+	 * @param withCountry
+	 *            the with country
+	 * @return the xml mail template name
+	 */
+	public static String getXmlMailTemplateName(String xmlMailTemplateName, Locale locale, boolean withCountry) {
+		StringBuilder localizedName = new StringBuilder();
+		localizedName.append(xmlMailTemplateName);
+		localizedName.append(LocaleExtensions.getLocaleFileSuffix(locale, withCountry));
+		localizedName.append(".xml");
+		return localizedName.toString().trim();
 	}
 
 }

@@ -66,25 +66,6 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 	@Autowired
 	private UsersService usersService;
 
-	@Autowired
-	public void setMessagesDao(final MessagesDao messagesDao) {
-		setDao(messagesDao);
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Messages> findMessagesChildren(final Messages parent) {
-		final String hqlString = "select distinct m " + "from " + Messages.class.getSimpleName() + " as m "
-				+ "where m.parent=:parent";
-		final Query query = getQuery(hqlString);
-		query.setParameter("parent", parent);
-		final List<Messages> messages = query.getResultList();
-		if (null != messages && !messages.isEmpty()) {
-			return messages;
-		}
-		return null;
-	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -136,19 +117,18 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 		return messages;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Messages> findSentMessages(final Users user) {
+	public List<Messages> findMessagesChildren(final Messages parent) {
 		final String hqlString = "select distinct m " + "from " + Messages.class.getSimpleName() + " as m "
-				+ "where m.sender=:user " + "and m.senderDeletedFlag=:senderDeletedFlag";
+				+ "where m.parent=:parent";
 		final Query query = getQuery(hqlString);
-		query.setParameter("user", user);
-		query.setParameter("senderDeletedFlag", Boolean.FALSE);
+		query.setParameter("parent", parent);
 		final List<Messages> messages = query.getResultList();
-		return messages;
+		if (null != messages && !messages.isEmpty()) {
+			return messages;
+		}
+		return null;
 	}
 
 	/**
@@ -164,6 +144,58 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 		query.setParameter("messagetype", MessageType.REPLY);
 		final List<Messages> messages = query.getResultList();
 		return messages;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Messages> findSentMessages(final Users user) {
+		final String hqlString = "select distinct m " + "from " + Messages.class.getSimpleName() + " as m "
+				+ "where m.sender=:user " + "and m.senderDeletedFlag=:senderDeletedFlag";
+		final Query query = getQuery(hqlString);
+		query.setParameter("user", user);
+		query.setParameter("senderDeletedFlag", Boolean.FALSE);
+		final List<Messages> messages = query.getResultList();
+		return messages;
+	}
+
+	public MessageRecipientsService getMessageRecipientsService() {
+		return messageRecipientsService;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Set<Users> getRecipients(final Messages message) {
+		final String hqlString = "select mr.recipient " + "from " + MessageRecipients.class.getSimpleName() + " mr "
+				+ "where mr.message=:message";
+		final Query query = getQuery(hqlString);
+		query.setParameter("message", message);
+		final List<Users> recipients = query.getResultList();
+		if (recipients != null && !recipients.isEmpty()) {
+			return new HashSet<Users>(recipients);
+		}
+		return null;
+	}
+
+	public UsersService getUsersService() {
+		return usersService;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean isRecipientFrom(final Messages message, final Users user) {
+		final Set<Users> recipients = getRecipients(message);
+		if (recipients != null && recipients.contains(user)) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -200,45 +232,13 @@ public class MessagesBusinessService extends AbstractBusinessService<Messages, I
 		return merge(message);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Set<Users> getRecipients(final Messages message) {
-		final String hqlString = "select mr.recipient " + "from " + MessageRecipients.class.getSimpleName() + " mr "
-				+ "where mr.message=:message";
-		final Query query = getQuery(hqlString);
-		query.setParameter("message", message);
-		final List<Users> recipients = query.getResultList();
-		if (recipients != null && !recipients.isEmpty()) {
-			return new HashSet<Users>(recipients);
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean isRecipientFrom(final Messages message, final Users user) {
-		final Set<Users> recipients = getRecipients(message);
-		if (recipients != null && recipients.contains(user)) {
-			return true;
-		}
-		return false;
-	}
-
-	public MessageRecipientsService getMessageRecipientsService() {
-		return messageRecipientsService;
-	}
-
 	public void setMessageRecipientsService(final MessageRecipientsService messageRecipientsService) {
 		this.messageRecipientsService = messageRecipientsService;
 	}
 
-	public UsersService getUsersService() {
-		return usersService;
+	@Autowired
+	public void setMessagesDao(final MessagesDao messagesDao) {
+		setDao(messagesDao);
 	}
 
 	public void setUsersService(final UsersService usersService) {

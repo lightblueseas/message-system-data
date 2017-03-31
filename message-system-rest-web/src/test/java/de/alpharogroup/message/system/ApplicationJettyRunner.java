@@ -53,6 +53,41 @@ import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
 public class ApplicationJettyRunner {
 
 	/**
+	 * Checks if a postgresql database exists.
+	 *
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @throws SQLException
+	 *             the SQL exception
+	 */
+	protected static boolean existsPostgreSQLDatabase() throws IOException, ClassNotFoundException, SQLException {
+		final Properties databaseProperties = PropertiesExtensions.loadProperties("jdbc.properties");
+		final String hostname = databaseProperties.getProperty("jdbc.host");
+		final String databaseName = databaseProperties.getProperty("jdbc.db.name");
+		final String databaseUser = databaseProperties.getProperty("jdbc.user");
+		final String databasePassword = databaseProperties.getProperty("jdbc.password");
+		final boolean dbExists = ConnectionsExtensions.existsPostgreSQLDatabase(hostname, databaseName, databaseUser,
+				databasePassword);
+		return dbExists;
+	}
+
+	/**
+	 * Gets the project name.
+	 *
+	 * @return the project name
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
+	protected static String getProjectName() throws IOException {
+		final Properties projectProperties = PropertiesExtensions.loadProperties("project.properties");
+		final String projectName = projectProperties.getProperty("artifactId");
+		return projectName;
+	}
+
+	/**
 	 * The main method starts a jetty server with the rest services for the
 	 * resource-bundle-data.
 	 *
@@ -94,41 +129,6 @@ public class ApplicationJettyRunner {
 		final Server server = new Server();
 		Jetty9Runner.runServletContextHandler(server, configuration);
 
-	}
-
-	/**
-	 * Gets the project name.
-	 *
-	 * @return the project name
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 */
-	protected static String getProjectName() throws IOException {
-		final Properties projectProperties = PropertiesExtensions.loadProperties("project.properties");
-		final String projectName = projectProperties.getProperty("artifactId");
-		return projectName;
-	}
-
-	/**
-	 * Checks if a postgresql database exists.
-	 *
-	 * @return true, if successful
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
-	 * @throws ClassNotFoundException
-	 *             the class not found exception
-	 * @throws SQLException
-	 *             the SQL exception
-	 */
-	protected static boolean existsPostgreSQLDatabase() throws IOException, ClassNotFoundException, SQLException {
-		final Properties databaseProperties = PropertiesExtensions.loadProperties("jdbc.properties");
-		final String hostname = databaseProperties.getProperty("jdbc.host");
-		final String databaseName = databaseProperties.getProperty("jdbc.db.name");
-		final String databaseUser = databaseProperties.getProperty("jdbc.user");
-		final String databasePassword = databaseProperties.getProperty("jdbc.password");
-		final boolean dbExists = ConnectionsExtensions.existsPostgreSQLDatabase(hostname, databaseName, databaseUser,
-				databasePassword);
-		return dbExists;
 	}
 
 }

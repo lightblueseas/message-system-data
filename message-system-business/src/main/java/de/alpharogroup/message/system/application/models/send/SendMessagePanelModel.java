@@ -115,19 +115,19 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
-		String xmlString = XmlExtensions.toXmlWithXStream(this);
-		return xmlString;
-
+	public SendMessagePanelModel toObject(String xml) {
+		SendMessagePanelModel model = XmlExtensions.toObjectWithXStream(xml);
+		return model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public SendMessagePanelModel toObject(String xml) {
-		SendMessagePanelModel model = XmlExtensions.toObjectWithXStream(xml);
-		return model;
+	public String toXml() {
+		String xmlString = XmlExtensions.toXmlWithXStream(this);
+		return xmlString;
+
 	}
 
 }

@@ -61,15 +61,15 @@ public class SendMessageModel implements ISendMessageModel, Transformable<SendMe
 	private IMessageContentModel messageContentModel;
 
 	@Override
-	public String toXml() {
-		String xml = XmlExtensions.toXmlWithXStream(this);
-		return xml;
-	}
-
-	@Override
 	public SendMessageModel toObject(String xml) {
 		SendMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
+	}
+
+	@Override
+	public String toXml() {
+		String xml = XmlExtensions.toXmlWithXStream(this);
+		return xml;
 	}
 
 }

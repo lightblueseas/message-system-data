@@ -37,20 +37,20 @@ public class EmailConfiguration {
 	 */
 	private int smtpPort = 25;
 
-	public int getSmtpPort() {
-		return smtpPort;
-	}
-
-	public void setSmtpPort(int smtpPort) {
-		this.smtpPort = smtpPort;
-	}
-
 	public String getHostName() {
 		return hostName;
 	}
 
+	public int getSmtpPort() {
+		return smtpPort;
+	}
+
 	public void setHostName(String hostName) {
 		this.hostName = hostName;
+	}
+
+	public void setSmtpPort(int smtpPort) {
+		this.smtpPort = smtpPort;
 	}
 
 }

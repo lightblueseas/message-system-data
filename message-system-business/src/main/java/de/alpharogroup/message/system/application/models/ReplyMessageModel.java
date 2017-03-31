@@ -107,18 +107,18 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
-		String xml = XmlExtensions.toXmlWithXStream(this);
-		return xml;
+	public ReplyMessageModel toObject(String xml) {
+		ReplyMessageModel model = XmlExtensions.toObjectWithXStream(xml);
+		return model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ReplyMessageModel toObject(String xml) {
-		ReplyMessageModel model = XmlExtensions.toObjectWithXStream(xml);
-		return model;
+	public String toXml() {
+		String xml = XmlExtensions.toXmlWithXStream(this);
+		return xml;
 	}
 
 }

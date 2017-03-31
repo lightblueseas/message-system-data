@@ -83,6 +83,34 @@ public class MessageModelConverter {
 	}
 
 	/**
+	 * Creates the base message model from the given parameters.
+	 *
+	 * @param model
+	 *            the model
+	 * @param sender
+	 *            the sender
+	 * @param recipient
+	 *            the recipient
+	 * @return the base message model
+	 */
+	public static IBaseMessageModel createBaseMessageModel(final SendMessagePanelModel model, Users sender,
+			final Users recipient) {
+		BaseMessageModel baseMessageModel = new BaseMessageModel();
+		IMessageContentModel messageModel = new MessageContentModel();
+		messageModel.setContent(model.getMessageContent());
+		messageModel.setSubject(model.getSubject());
+		baseMessageModel.setMessageContentModel(messageModel);
+		ISendInformationModel messageSendModel = new SendInformationModel();
+		baseMessageModel.setSendInformationModel(messageSendModel);
+		baseMessageModel.setMessageState(MessageState.UNREPLIED);
+		baseMessageModel.setMessageType(MessageType.MAIL);
+		baseMessageModel.getSendInformationModel().addRecipient(recipient);
+		baseMessageModel.getSendInformationModel().setSender(sender);
+		baseMessageModel.getSendInformationModel().setSentDate(new Date(System.currentTimeMillis()));
+		return baseMessageModel;
+	}
+
+	/**
 	 * Creates the message.
 	 *
 	 * @param model
@@ -101,6 +129,10 @@ public class MessageModelConverter {
 		return message;
 	}
 
+	public static Messages createMessage(InfoMessageModel model, Users sender) {
+		return createMessage(model, sender, new Date(System.currentTimeMillis()));
+	}
+
 	public static Messages createMessage(InfoMessageModel model, Users sender, Date sentDate) {
 		// set recipient...
 		// String senderEmail = model.getApplicationSenderAddress();
@@ -113,10 +145,6 @@ public class MessageModelConverter {
 				content, MessageType.MAIL, Boolean.FALSE, sender, sentDate, Boolean.FALSE, MessageState.UNREPLIED,
 				subject);
 		return message;
-	}
-
-	public static Messages createMessage(InfoMessageModel model, Users sender) {
-		return createMessage(model, sender, new Date(System.currentTimeMillis()));
 	}
 
 	/**
@@ -153,34 +181,6 @@ public class MessageModelConverter {
 		message.setSentDate(model.getSendInformationModel().getSentDate());
 		message.setState(model.getMessageState());
 		message.setSubject(model.getMessageContentModel().getSubject());
-	}
-
-	/**
-	 * Creates the base message model from the given parameters.
-	 *
-	 * @param model
-	 *            the model
-	 * @param sender
-	 *            the sender
-	 * @param recipient
-	 *            the recipient
-	 * @return the base message model
-	 */
-	public static IBaseMessageModel createBaseMessageModel(final SendMessagePanelModel model, Users sender,
-			final Users recipient) {
-		BaseMessageModel baseMessageModel = new BaseMessageModel();
-		IMessageContentModel messageModel = new MessageContentModel();
-		messageModel.setContent(model.getMessageContent());
-		messageModel.setSubject(model.getSubject());
-		baseMessageModel.setMessageContentModel(messageModel);
-		ISendInformationModel messageSendModel = new SendInformationModel();
-		baseMessageModel.setSendInformationModel(messageSendModel);
-		baseMessageModel.setMessageState(MessageState.UNREPLIED);
-		baseMessageModel.setMessageType(MessageType.MAIL);
-		baseMessageModel.getSendInformationModel().addRecipient(recipient);
-		baseMessageModel.getSendInformationModel().setSender(sender);
-		baseMessageModel.getSendInformationModel().setSentDate(new Date(System.currentTimeMillis()));
-		return baseMessageModel;
 	}
 
 }

@@ -82,17 +82,17 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
-		String xml = XmlExtensions.toXmlWithXStream(this);
-		return xml;
+	public BaseMessageModel toObject(String xml) {
+		BaseMessageModel model = XmlExtensions.toObjectWithXStream(xml);
+		return model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public BaseMessageModel toObject(String xml) {
-		BaseMessageModel model = XmlExtensions.toObjectWithXStream(xml);
-		return model;
+	public String toXml() {
+		String xml = XmlExtensions.toXmlWithXStream(this);
+		return xml;
 	}
 }

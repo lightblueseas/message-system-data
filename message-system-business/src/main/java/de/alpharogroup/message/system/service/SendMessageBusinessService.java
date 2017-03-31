@@ -46,40 +46,6 @@ public class SendMessageBusinessService {
 	private static final Logger LOGGER = Logger.getLogger(SendMessageBusinessService.class.getName());
 
 	/**
-	 * Send info email.
-	 *
-	 * @param emailSender
-	 *            the email sender
-	 * @param model
-	 *            the model
-	 * @throws MessagingException
-	 *             the messaging exception
-	 */
-	public static void sendInfoEmail(final SendEmail emailSender, final InfoMessageModel model)
-			throws MessagingException {
-		sendInfoEmail(emailSender, model, null);
-	}
-
-	/**
-	 * Send info email.
-	 *
-	 * @param emailSender
-	 *            the email sender
-	 * @param model
-	 *            the model
-	 * @param emailHeaders
-	 *            the email headers
-	 * @throws MessagingException
-	 *             the messaging exception
-	 */
-	public static void sendInfoEmail(final SendEmail emailSender, final InfoMessageModel model,
-			final Map<String, String> emailHeaders) throws MessagingException {
-		sendEmail(emailSender, model.getApplicationSenderAddress(), model.getApplicationDomainName(),
-				model.getRecipientEmailContact(), model.getRecipientFullName(),
-				model.getMessageContentModel().getSubject(), model.getMessageContentModel().getContent(), emailHeaders);
-	}
-
-	/**
 	 * Send email with default email headers.
 	 *
 	 * @param emailSender
@@ -189,6 +155,40 @@ public class SendMessageBusinessService {
 			}
 		}
 		emailSender.sendEmailMessage(emailMessage);
+	}
+
+	/**
+	 * Send info email.
+	 *
+	 * @param emailSender
+	 *            the email sender
+	 * @param model
+	 *            the model
+	 * @throws MessagingException
+	 *             the messaging exception
+	 */
+	public static void sendInfoEmail(final SendEmail emailSender, final InfoMessageModel model)
+			throws MessagingException {
+		sendInfoEmail(emailSender, model, null);
+	}
+
+	/**
+	 * Send info email.
+	 *
+	 * @param emailSender
+	 *            the email sender
+	 * @param model
+	 *            the model
+	 * @param emailHeaders
+	 *            the email headers
+	 * @throws MessagingException
+	 *             the messaging exception
+	 */
+	public static void sendInfoEmail(final SendEmail emailSender, final InfoMessageModel model,
+			final Map<String, String> emailHeaders) throws MessagingException {
+		sendEmail(emailSender, model.getApplicationSenderAddress(), model.getApplicationDomainName(),
+				model.getRecipientEmailContact(), model.getRecipientFullName(),
+				model.getMessageContentModel().getSubject(), model.getMessageContentModel().getContent(), emailHeaders);
 	}
 
 }

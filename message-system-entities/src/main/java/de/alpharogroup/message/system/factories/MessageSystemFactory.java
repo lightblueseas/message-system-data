@@ -64,6 +64,88 @@ public class MessageSystemFactory implements Serializable {
 	}
 
 	/**
+	 * Data pool factory for MessageRecipients.
+	 *
+	 * @param id
+	 *            The id
+	 * @param message
+	 *            A valid Messages object
+	 * @param recipientEmail
+	 *            A valid Contactmethods object
+	 * @return MessageRecipients A MessageRecipients object
+	 */
+	public MessageRecipients newMessageRecipients(Integer id, Messages message, Contactmethods recipientEmail) {
+		return newMessageRecipients(id, message, null, recipientEmail);
+	}
+
+	/**
+	 * Data pool factory for MessageRecipients.
+	 *
+	 * @param id
+	 *            The id
+	 * @param message
+	 *            A valid Messages object
+	 * @param recipient
+	 *            A valid Users object
+	 * @return MessageRecipients A MessageRecipients object
+	 */
+	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient) {
+		return newMessageRecipients(id, message, recipient, null);
+	}
+
+	/**
+	 * Data pool factory for MessageRecipients.
+	 *
+	 * @param id
+	 *            The id
+	 * @param message
+	 *            A valid Messages object
+	 * @param recipient
+	 *            A valid Users object
+	 * @param recipientEmail
+	 *            A valid Contactmethods object
+	 * @return MessageRecipients A MessageRecipients object
+	 */
+	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient,
+			Contactmethods recipientEmail) {
+		MessageRecipients messageRecipients = new MessageRecipients();
+		messageRecipients.setId(id);
+		messageRecipients.setMessage(message);
+		messageRecipients.setRecipient(recipient);
+		messageRecipients.setRecipientEmail(recipientEmail);
+		return messageRecipients;
+	}
+
+	/**
+	 * Gets the message recipients.
+	 * 
+	 * @param message
+	 *            the message
+	 * @param recipient
+	 *            the recipient
+	 * @return the message recipients
+	 */
+	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient) {
+		return newMessageRecipients(null, message, recipient);
+	}
+
+	/**
+	 * Gets the message recipients.
+	 * 
+	 * @param message
+	 *            the message
+	 * @param recipient
+	 *            the recipient
+	 * @param recipientEmail
+	 *            A valid Contactmethods object
+	 * @return the message recipients
+	 */
+	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient,
+			Contactmethods recipientEmail) {
+		return newMessageRecipients(null, message, recipient, recipientEmail);
+	}
+
+	/**
 	 * Data pool factory for Messages.
 	 *
 	 * @param deletedFlag
@@ -186,16 +268,13 @@ public class MessageSystemFactory implements Serializable {
 	 *            the state
 	 * @param subject
 	 *            the subject
-	 * @param parent
-	 *            the parent of the message to create.
 	 * @return the messages
 	 */
 	public Messages newMessages(final Boolean deletedFlag, final Boolean failed2sentemail, final String folder,
 			final String messageContent, final MessageType messagetype, final Boolean readFlag, final Users sender,
-			final Date sentDate, final Boolean spamFlag, final MessageState state, final String subject,
-			Messages parent) {
+			final Date sentDate, final Boolean spamFlag, final MessageState state, final String subject) {
 		return newMessages(deletedFlag, failed2sentemail, folder, null, messageContent, messagetype, readFlag, sender,
-				sentDate, spamFlag, state, subject, parent, Boolean.FALSE);
+				sentDate, spamFlag, state, subject, null, Boolean.FALSE);
 	}
 
 	/**
@@ -223,94 +302,15 @@ public class MessageSystemFactory implements Serializable {
 	 *            the state
 	 * @param subject
 	 *            the subject
+	 * @param parent
+	 *            the parent of the message to create.
 	 * @return the messages
 	 */
 	public Messages newMessages(final Boolean deletedFlag, final Boolean failed2sentemail, final String folder,
 			final String messageContent, final MessageType messagetype, final Boolean readFlag, final Users sender,
-			final Date sentDate, final Boolean spamFlag, final MessageState state, final String subject) {
+			final Date sentDate, final Boolean spamFlag, final MessageState state, final String subject,
+			Messages parent) {
 		return newMessages(deletedFlag, failed2sentemail, folder, null, messageContent, messagetype, readFlag, sender,
-				sentDate, spamFlag, state, subject, null, Boolean.FALSE);
-	}
-
-	/**
-	 * Data pool factory for MessageRecipients.
-	 *
-	 * @param id
-	 *            The id
-	 * @param message
-	 *            A valid Messages object
-	 * @param recipient
-	 *            A valid Users object
-	 * @return MessageRecipients A MessageRecipients object
-	 */
-	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient) {
-		return newMessageRecipients(id, message, recipient, null);
-	}
-
-	/**
-	 * Data pool factory for MessageRecipients.
-	 *
-	 * @param id
-	 *            The id
-	 * @param message
-	 *            A valid Messages object
-	 * @param recipient
-	 *            A valid Users object
-	 * @param recipientEmail
-	 *            A valid Contactmethods object
-	 * @return MessageRecipients A MessageRecipients object
-	 */
-	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient,
-			Contactmethods recipientEmail) {
-		MessageRecipients messageRecipients = new MessageRecipients();
-		messageRecipients.setId(id);
-		messageRecipients.setMessage(message);
-		messageRecipients.setRecipient(recipient);
-		messageRecipients.setRecipientEmail(recipientEmail);
-		return messageRecipients;
-	}
-
-	/**
-	 * Data pool factory for MessageRecipients.
-	 *
-	 * @param id
-	 *            The id
-	 * @param message
-	 *            A valid Messages object
-	 * @param recipientEmail
-	 *            A valid Contactmethods object
-	 * @return MessageRecipients A MessageRecipients object
-	 */
-	public MessageRecipients newMessageRecipients(Integer id, Messages message, Contactmethods recipientEmail) {
-		return newMessageRecipients(id, message, null, recipientEmail);
-	}
-
-	/**
-	 * Gets the message recipients.
-	 * 
-	 * @param message
-	 *            the message
-	 * @param recipient
-	 *            the recipient
-	 * @return the message recipients
-	 */
-	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient) {
-		return newMessageRecipients(null, message, recipient);
-	}
-
-	/**
-	 * Gets the message recipients.
-	 * 
-	 * @param message
-	 *            the message
-	 * @param recipient
-	 *            the recipient
-	 * @param recipientEmail
-	 *            A valid Contactmethods object
-	 * @return the message recipients
-	 */
-	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient,
-			Contactmethods recipientEmail) {
-		return newMessageRecipients(null, message, recipient, recipientEmail);
+				sentDate, spamFlag, state, subject, parent, Boolean.FALSE);
 	}
 }

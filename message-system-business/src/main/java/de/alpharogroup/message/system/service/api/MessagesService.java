@@ -39,34 +39,13 @@ import de.alpharogroup.user.entities.Users;
 public interface MessagesService extends BusinessService<Messages, Integer> {
 
 	/**
-	 * Creates a Messages object and saves it with all recipients from the given
-	 * BaseMessageModel object.
+	 * Find all children and childrens children.
 	 *
-	 * @param model
-	 *            the model
-	 * @return the messages
+	 * @param parent
+	 *            the parent
+	 * @return the list
 	 */
-	Messages saveMessageWithRecipients(IBaseMessageModel model);
-
-	/**
-	 * Gets the recipients from the given Messages object.
-	 *
-	 * @param message
-	 *            the message
-	 * @return the recipients
-	 */
-	Set<Users> getRecipients(Messages message);
-
-	/**
-	 * Checks if the given user is recipient from the given Messages object.
-	 *
-	 * @param message
-	 *            the message
-	 * @param user
-	 *            the user
-	 * @return true if the user is a recipient otherwise false
-	 */
-	boolean isRecipientFrom(Messages message, Users user);
+	List<Messages> findAllChildren(final Messages parent);
 
 	/**
 	 * Find all messages from the given user.
@@ -89,14 +68,13 @@ public interface MessagesService extends BusinessService<Messages, Integer> {
 	List<Messages> findMessages(final Users user, final MessageState state);
 
 	/**
-	 * Find sent messages from the given user that represents the sender of the
-	 * message.
+	 * Find messages children.
 	 *
-	 * @param user
-	 *            the user
+	 * @param parent
+	 *            the parent
 	 * @return the list
 	 */
-	List<Messages> findSentMessages(final Users user);
+	List<Messages> findMessagesChildren(Messages parent);
 
 	/**
 	 * Find reply messages from the given user.
@@ -108,20 +86,42 @@ public interface MessagesService extends BusinessService<Messages, Integer> {
 	List<Messages> findReplyMessages(final Users user);
 
 	/**
-	 * Find messages children.
+	 * Find sent messages from the given user that represents the sender of the
+	 * message.
 	 *
-	 * @param parent
-	 *            the parent
+	 * @param user
+	 *            the user
 	 * @return the list
 	 */
-	List<Messages> findMessagesChildren(Messages parent);
+	List<Messages> findSentMessages(final Users user);
 
 	/**
-	 * Find all children and childrens children.
+	 * Gets the recipients from the given Messages object.
 	 *
-	 * @param parent
-	 *            the parent
-	 * @return the list
+	 * @param message
+	 *            the message
+	 * @return the recipients
 	 */
-	List<Messages> findAllChildren(final Messages parent);
+	Set<Users> getRecipients(Messages message);
+
+	/**
+	 * Checks if the given user is recipient from the given Messages object.
+	 *
+	 * @param message
+	 *            the message
+	 * @param user
+	 *            the user
+	 * @return true if the user is a recipient otherwise false
+	 */
+	boolean isRecipientFrom(Messages message, Users user);
+
+	/**
+	 * Creates a Messages object and saves it with all recipients from the given
+	 * BaseMessageModel object.
+	 *
+	 * @param model
+	 *            the model
+	 * @return the messages
+	 */
+	Messages saveMessageWithRecipients(IBaseMessageModel model);
 }

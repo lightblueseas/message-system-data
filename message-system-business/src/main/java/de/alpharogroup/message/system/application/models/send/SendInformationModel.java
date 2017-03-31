@@ -92,18 +92,18 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
-		String xml = XmlExtensions.toXmlWithXStream(this);
-		return xml;
+	public ISendInformationModel toObject(String xml) {
+		ISendInformationModel model = XmlExtensions.toObjectWithXStream(xml);
+		return model;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ISendInformationModel toObject(String xml) {
-		ISendInformationModel model = XmlExtensions.toObjectWithXStream(xml);
-		return model;
+	public String toXml() {
+		String xml = XmlExtensions.toXmlWithXStream(this);
+		return xml;
 	}
 
 }
