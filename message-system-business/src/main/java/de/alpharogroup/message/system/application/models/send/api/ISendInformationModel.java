@@ -31,10 +31,11 @@ import java.util.Set;
 import de.alpharogroup.user.entities.Users;
 
 /**
- * The interface ISendInformationModel provides information about the sender and
- * the recipients of a message.
+ * The interface ISendInformationModel provides information about the sender and the recipients of a
+ * message.
  */
-public interface ISendInformationModel extends Serializable {
+public interface ISendInformationModel extends Serializable
+{
 
 	/**
 	 * Adds a recipient to the recipients.

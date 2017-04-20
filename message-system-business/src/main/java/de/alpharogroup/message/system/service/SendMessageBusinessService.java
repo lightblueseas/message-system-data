@@ -41,9 +41,11 @@ import de.alpharogroup.string.StringExtensions;
 /**
  * The Class SendMessageBusinessService.
  */
-public class SendMessageBusinessService {
+public class SendMessageBusinessService
+{
 	/** The Constant logger. */
-	private static final Logger LOGGER = Logger.getLogger(SendMessageBusinessService.class.getName());
+	private static final Logger LOGGER = Logger
+		.getLogger(SendMessageBusinessService.class.getName());
 
 	/**
 	 * Send email with default email headers.
@@ -65,10 +67,12 @@ public class SendMessageBusinessService {
 	 * @throws MessagingException
 	 *             the messaging exception
 	 */
-	public static void sendEmail(final SendEmail emailSender, final String senderEmail, final String senderPersonal,
-			final String recipientEmail, final String recipientPersonal, final String subject, final String content)
-			throws MessagingException {
-		sendEmail(emailSender, senderEmail, senderPersonal, recipientEmail, recipientPersonal, subject, content, null);
+	public static void sendEmail(final SendEmail emailSender, final String senderEmail,
+		final String senderPersonal, final String recipientEmail, final String recipientPersonal,
+		final String subject, final String content) throws MessagingException
+	{
+		sendEmail(emailSender, senderEmail, senderPersonal, recipientEmail, recipientPersonal,
+			subject, content, null);
 	}
 
 	/**
@@ -93,11 +97,13 @@ public class SendMessageBusinessService {
 	 * @throws MessagingException
 	 *             the messaging exception
 	 */
-	public static void sendEmail(final SendEmail emailSender, final String senderEmail, final String senderPersonal,
-			final String recipientEmail, final String recipientPersonal, final String subject, final String content,
-			final Map<String, String> emailHeaders) throws MessagingException {
-		sendEmail(emailSender, senderEmail, senderPersonal, recipientEmail, recipientPersonal, subject, content,
-				emailHeaders, false);
+	public static void sendEmail(final SendEmail emailSender, final String senderEmail,
+		final String senderPersonal, final String recipientEmail, final String recipientPersonal,
+		final String subject, final String content, final Map<String, String> emailHeaders)
+		throws MessagingException
+	{
+		sendEmail(emailSender, senderEmail, senderPersonal, recipientEmail, recipientPersonal,
+			subject, content, emailHeaders, false);
 	}
 
 	/**
@@ -120,25 +126,31 @@ public class SendMessageBusinessService {
 	 * @param emailHeaders
 	 *            the email headers
 	 * @param withSession
-	 *            the flag if the message will be created with the mail session
-	 *            of the {@link SendEmail}
+	 *            the flag if the message will be created with the mail session of the
+	 *            {@link SendEmail}
 	 * @throws MessagingException
 	 *             the messaging exception
 	 */
-	public static void sendEmail(final SendEmail emailSender, final String senderEmail, final String senderPersonal,
-			final String recipientEmail, final String recipientPersonal, String subject, final String content,
-			final Map<String, String> emailHeaders, final boolean withSession) throws MessagingException {
+	public static void sendEmail(final SendEmail emailSender, final String senderEmail,
+		final String senderPersonal, final String recipientEmail, final String recipientPersonal,
+		String subject, final String content, final Map<String, String> emailHeaders,
+		final boolean withSession) throws MessagingException
+	{
 		final EmailMessage emailMessage;
-		if (withSession) {
+		if (withSession)
+		{
 			emailMessage = new EmailMessage(emailSender.getSession());
-		} else {
+		}
+		else
+		{
 			emailMessage = new EmailMessage();
 		}
 		// Set the sender...
-		EmailExtensions.setFromToEmailMessage(senderEmail, senderPersonal, EmailConstants.CHARSET_UTF8, emailMessage);
+		EmailExtensions.setFromToEmailMessage(senderEmail, senderPersonal,
+			EmailConstants.CHARSET_UTF8, emailMessage);
 		// Set recipient
-		EmailExtensions.addToRecipientToEmailMessage(recipientEmail, recipientPersonal, EmailConstants.CHARSET_UTF8,
-				emailMessage);
+		EmailExtensions.addToRecipientToEmailMessage(recipientEmail, recipientPersonal,
+			EmailConstants.CHARSET_UTF8, emailMessage);
 		// Set subject
 		LOGGER.debug("Subject:" + subject);
 		// Remove new line characters from subject. If the subject contains new
@@ -149,8 +161,10 @@ public class SendMessageBusinessService {
 		LOGGER.debug("Content:" + content);
 		emailMessage.setUtf8Content(content);
 		// Set email header
-		if (emailHeaders != null && !emailHeaders.isEmpty()) {
-			for (final Entry<String, String> emailHeaderEntry : emailHeaders.entrySet()) {
+		if (emailHeaders != null && !emailHeaders.isEmpty())
+		{
+			for (final Entry<String, String> emailHeaderEntry : emailHeaders.entrySet())
+			{
 				emailMessage.setHeader(emailHeaderEntry.getKey(), emailHeaderEntry.getValue());
 			}
 		}
@@ -168,7 +182,8 @@ public class SendMessageBusinessService {
 	 *             the messaging exception
 	 */
 	public static void sendInfoEmail(final SendEmail emailSender, final InfoMessageModel model)
-			throws MessagingException {
+		throws MessagingException
+	{
 		sendInfoEmail(emailSender, model, null);
 	}
 
@@ -185,10 +200,12 @@ public class SendMessageBusinessService {
 	 *             the messaging exception
 	 */
 	public static void sendInfoEmail(final SendEmail emailSender, final InfoMessageModel model,
-			final Map<String, String> emailHeaders) throws MessagingException {
-		sendEmail(emailSender, model.getApplicationSenderAddress(), model.getApplicationDomainName(),
-				model.getRecipientEmailContact(), model.getRecipientFullName(),
-				model.getMessageContentModel().getSubject(), model.getMessageContentModel().getContent(), emailHeaders);
+		final Map<String, String> emailHeaders) throws MessagingException
+	{
+		sendEmail(emailSender, model.getApplicationSenderAddress(),
+			model.getApplicationDomainName(), model.getRecipientEmailContact(),
+			model.getRecipientFullName(), model.getMessageContentModel().getSubject(),
+			model.getMessageContentModel().getContent(), emailHeaders);
 	}
 
 }

@@ -27,7 +27,8 @@ package de.alpharogroup.message.system.service.locator;
 import de.alpharogroup.message.system.service.api.MessageRecipientsService;
 import de.alpharogroup.message.system.service.api.MessagesService;
 
-public interface ServiceLocator {
+public interface ServiceLocator
+{
 
 	/**
 	 * Gets the message recipients service.

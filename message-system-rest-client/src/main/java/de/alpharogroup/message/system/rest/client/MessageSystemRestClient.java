@@ -32,7 +32,8 @@ import lombok.Getter;
 /**
  * The class {@link MessageSystemRestClient}.
  */
-public class MessageSystemRestClient extends AbstractRestClient {
+public class MessageSystemRestClient extends AbstractRestClient
+{
 
 	/**
 	 * The {@link MessagesResource}.
@@ -47,21 +48,21 @@ public class MessageSystemRestClient extends AbstractRestClient {
 	private final MessageRecipientsResource messageRecipientsResource;
 
 	/**
-	 * Instantiates a new {@link MessageSystemRestClient} with the default base
-	 * url.
+	 * Instantiates a new {@link MessageSystemRestClient} with the default base url.
 	 */
-	public MessageSystemRestClient() {
+	public MessageSystemRestClient()
+	{
 		this(DEFAULT_BASE_HTTP_URL);
 	}
 
 	/**
-	 * Instantiates a new {@link MessageSystemRestClient} with the given base
-	 * url.
+	 * Instantiates a new {@link MessageSystemRestClient} with the given base url.
 	 *
 	 * @param baseUrl
 	 *            the base url
 	 */
-	public MessageSystemRestClient(final String baseUrl) {
+	public MessageSystemRestClient(final String baseUrl)
+	{
 		super(baseUrl);
 		messagesResource = newResource(MessagesResource.class);
 		messageRecipientsResource = newResource(MessageRecipientsResource.class);

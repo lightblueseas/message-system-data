@@ -27,7 +27,8 @@ package de.alpharogroup.message.system.application.models.send.api;
 import de.alpharogroup.message.system.enums.MessageState;
 import de.alpharogroup.message.system.enums.MessageType;
 
-public interface IBaseMessageModel extends ISendMessageModel {
+public interface IBaseMessageModel extends ISendMessageModel
+{
 
 	/**
 	 * Gets the message state.

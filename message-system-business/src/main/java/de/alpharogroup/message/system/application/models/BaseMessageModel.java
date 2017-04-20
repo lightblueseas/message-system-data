@@ -33,7 +33,8 @@ import de.alpharogroup.xml.XmlExtensions;
 /**
  * The Class BaseMessageModel.
  */
-public class BaseMessageModel extends SendMessageModel implements IBaseMessageModel {
+public class BaseMessageModel extends SendMessageModel implements IBaseMessageModel
+{
 
 	/**
 	 * The serialVersionUID.
@@ -50,7 +51,8 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public MessageState getMessageState() {
+	public MessageState getMessageState()
+	{
 		return messageState;
 	}
 
@@ -58,7 +60,8 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public MessageType getMessageType() {
+	public MessageType getMessageType()
+	{
 		return messageType;
 	}
 
@@ -66,7 +69,8 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setMessageState(MessageState messageState) {
+	public void setMessageState(MessageState messageState)
+	{
 		this.messageState = messageState;
 	}
 
@@ -74,7 +78,8 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setMessageType(MessageType messageType) {
+	public void setMessageType(MessageType messageType)
+	{
 		this.messageType = messageType;
 	}
 
@@ -82,7 +87,8 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public BaseMessageModel toObject(String xml) {
+	public BaseMessageModel toObject(String xml)
+	{
 		BaseMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
@@ -91,7 +97,8 @@ public class BaseMessageModel extends SendMessageModel implements IBaseMessageMo
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}

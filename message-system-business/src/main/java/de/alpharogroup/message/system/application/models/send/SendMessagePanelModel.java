@@ -32,7 +32,8 @@ import de.alpharogroup.xml.api.Transformable;
 /**
  * The Class SendMessagePanelModel.
  */
-public class SendMessagePanelModel implements Serializable, Transformable<SendMessagePanelModel> {
+public class SendMessagePanelModel implements Serializable, Transformable<SendMessagePanelModel>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -51,7 +52,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	/**
 	 * Instantiates a new send message model.
 	 */
-	public SendMessagePanelModel() {
+	public SendMessagePanelModel()
+	{
 	}
 
 	/**
@@ -59,7 +61,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * 
 	 * @return the message content
 	 */
-	public String getMessageContent() {
+	public String getMessageContent()
+	{
 		return messageContent;
 	}
 
@@ -68,7 +71,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * 
 	 * @return the recipient
 	 */
-	public String getRecipient() {
+	public String getRecipient()
+	{
 		return recipient;
 	}
 
@@ -77,7 +81,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * 
 	 * @return the subject
 	 */
-	public String getSubject() {
+	public String getSubject()
+	{
 		return subject;
 	}
 
@@ -87,7 +92,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * @param messageContent
 	 *            the new message content
 	 */
-	public void setMessageContent(String messageContent) {
+	public void setMessageContent(String messageContent)
+	{
 		this.messageContent = messageContent;
 	}
 
@@ -97,7 +103,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * @param recipient
 	 *            the new recipient
 	 */
-	public void setRecipient(String recipient) {
+	public void setRecipient(String recipient)
+	{
 		this.recipient = recipient;
 	}
 
@@ -107,7 +114,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * @param subject
 	 *            the new subject
 	 */
-	public void setSubject(String subject) {
+	public void setSubject(String subject)
+	{
 		this.subject = subject;
 	}
 
@@ -115,7 +123,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * {@inheritDoc}
 	 */
 	@Override
-	public SendMessagePanelModel toObject(String xml) {
+	public SendMessagePanelModel toObject(String xml)
+	{
 		SendMessagePanelModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
@@ -124,7 +133,8 @@ public class SendMessagePanelModel implements Serializable, Transformable<SendMe
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		String xmlString = XmlExtensions.toXmlWithXStream(this);
 		return xmlString;
 

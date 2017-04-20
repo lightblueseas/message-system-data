@@ -47,7 +47,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SendMessageModel implements ISendMessageModel, Transformable<SendMessageModel> {
+public class SendMessageModel implements ISendMessageModel, Transformable<SendMessageModel>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -61,13 +62,15 @@ public class SendMessageModel implements ISendMessageModel, Transformable<SendMe
 	private IMessageContentModel messageContentModel;
 
 	@Override
-	public SendMessageModel toObject(String xml) {
+	public SendMessageModel toObject(String xml)
+	{
 		SendMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
 
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}

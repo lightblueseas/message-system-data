@@ -30,6 +30,7 @@ import de.alpharogroup.service.domain.DomainService;
 /**
  * The interface {@link MessageService}.
  */
-public interface MessageService extends DomainService<Integer, Message> {
+public interface MessageService extends DomainService<Integer, Message>
+{
 
 }

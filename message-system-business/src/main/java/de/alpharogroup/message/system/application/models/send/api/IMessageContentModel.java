@@ -32,7 +32,8 @@ import de.alpharogroup.xml.api.Xmlable;
 /**
  * The Interface IMessageModel.
  */
-public interface IMessageContentModel extends Serializable, Xmlable {
+public interface IMessageContentModel extends Serializable, Xmlable
+{
 
 	/**
 	 * Gets the message content.

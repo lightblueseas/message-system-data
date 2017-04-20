@@ -46,7 +46,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MessageContentModel implements IMessageContentModel, Transformable<IMessageContentModel> {
+public class MessageContentModel
+	implements
+		IMessageContentModel,
+		Transformable<IMessageContentModel>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -66,7 +70,8 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 	 * {@inheritDoc}
 	 */
 	@Override
-	public IMessageContentModel toObject(String xml) {
+	public IMessageContentModel toObject(String xml)
+	{
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
 		aliases.put("message", MessageContentModel.class);
 		return XmlExtensions.toObjectWithXStream(xml, aliases);
@@ -76,7 +81,8 @@ public class MessageContentModel implements IMessageContentModel, Transformable<
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		Map<String, Class<?>> aliases = new HashMap<String, Class<?>>();
 		aliases.put("message", MessageContentModel.class);
 		String xmlString = XmlExtensions.toXmlWithXStream(this, aliases);

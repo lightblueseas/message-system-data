@@ -49,7 +49,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Message extends BaseDomainObject<Integer> {
+public class Message extends BaseDomainObject<Integer>
+{
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -58,13 +59,13 @@ public class Message extends BaseDomainObject<Integer> {
 	 **/
 	private Message parent;
 	/**
-	 * A flag that indicates that the message is deleted from the sender but
-	 * will not really deleted because of references to other messages.
+	 * A flag that indicates that the message is deleted from the sender but will not really deleted
+	 * because of references to other messages.
 	 */
 	private Boolean senderDeletedFlag;
 	/**
-	 * A flag that indicates that the message is deleted from the recipient but
-	 * will not really deleted because of references to other messages.
+	 * A flag that indicates that the message is deleted from the recipient but will not really
+	 * deleted because of references to other messages.
 	 */
 	private Boolean recipientDeletedFlag;
 	/** A flag that indicates that the message could not be sent. */
@@ -76,8 +77,7 @@ public class Message extends BaseDomainObject<Integer> {
 	/** An enum for the message type. */
 	private MessageType messagetype;
 	/**
-	 * A flag that indicates if the message is readed(at least opened) from the
-	 * recipient(s).
+	 * A flag that indicates if the message is readed(at least opened) from the recipient(s).
 	 */
 	private Boolean readFlag;
 	/** The sender of the message. */

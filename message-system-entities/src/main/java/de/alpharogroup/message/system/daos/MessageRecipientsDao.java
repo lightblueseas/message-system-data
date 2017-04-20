@@ -30,7 +30,8 @@ import de.alpharogroup.db.dao.jpa.JpaEntityManagerDao;
 import de.alpharogroup.message.system.entities.MessageRecipients;
 
 @Repository("messageRecipientsDao")
-public class MessageRecipientsDao extends JpaEntityManagerDao<MessageRecipients, Integer> {
+public class MessageRecipientsDao extends JpaEntityManagerDao<MessageRecipients, Integer>
+{
 	/**
 	 * The serialVersionUID.
 	 */

@@ -31,13 +31,16 @@ import java.util.Properties;
 
 import de.alpharogroup.db.init.AbstractDatabaseInitialization;
 
-public class DatabaseInitialization extends AbstractDatabaseInitialization {
+public class DatabaseInitialization extends AbstractDatabaseInitialization
+{
 
-	public DatabaseInitialization(Properties databaseProperties) {
+	public DatabaseInitialization(Properties databaseProperties)
+	{
 		super(databaseProperties);
 	}
 
-	protected List<File> getScriptFiles() {
+	protected List<File> getScriptFiles()
+	{
 		return new ArrayList<>();
 	}
 

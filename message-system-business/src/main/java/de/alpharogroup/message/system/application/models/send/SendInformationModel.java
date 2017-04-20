@@ -42,8 +42,8 @@ import lombok.Singular;
 import lombok.ToString;
 
 /**
- * The Class SendInformationModel captures information about the sender and the
- * recipients of a message.
+ * The Class SendInformationModel captures information about the sender and the recipients of a
+ * message.
  */
 @Getter
 @Setter
@@ -52,7 +52,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SendInformationModel implements ISendInformationModel, Transformable<ISendInformationModel> {
+public class SendInformationModel
+	implements
+		ISendInformationModel,
+		Transformable<ISendInformationModel>
+{
 
 	/**
 	 * The serialVersionUID.
@@ -73,8 +77,10 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void addRecipient(Users recipient) {
-		if (recipients == null) {
+	public void addRecipient(Users recipient)
+	{
+		if (recipients == null)
+		{
 			recipients = new HashSet<Users>();
 		}
 		recipients.add(recipient);
@@ -84,7 +90,8 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean removeRecipient(Users recipient) {
+	public boolean removeRecipient(Users recipient)
+	{
 		return recipients.remove(recipient);
 	}
 
@@ -92,7 +99,8 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ISendInformationModel toObject(String xml) {
+	public ISendInformationModel toObject(String xml)
+	{
 		ISendInformationModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
@@ -101,7 +109,8 @@ public class SendInformationModel implements ISendInformationModel, Transformabl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}

@@ -60,7 +60,8 @@ import de.alpharogroup.user.management.sign.up.UserModel;
 import de.alpharogroup.user.service.api.RolesService;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
-public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTests {
+public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTests
+{
 	@Autowired
 	private UsersManagementService userManagementService;
 	@Autowired
@@ -70,36 +71,48 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 	@Autowired
 	private AddressesService addressesService;
 
-	public Set<Roles> createRolesSet() {
+	public Set<Roles> createRolesSet()
+	{
 		final List<Roles> r = rolesService.findAll();
 		final Set<Roles> roles = new HashSet<>();
-		if (r != null && !r.isEmpty()) {
+		if (r != null && !r.isEmpty())
+		{
 			roles.add(r.get(0));
-		} else {
+		}
+		else
+		{
 			final Roles role = rolesService.createAndSaveRole("ADMIN", "The admin role");
 			roles.add(role);
 		}
 		return roles;
 	}
 
-	public Users getUser(final String firstname, final String lastname, final String email, final String username) {
+	public Users getUser(final String firstname, final String lastname, final String email,
+		final String username)
+	{
 
-		final UserManagementModelFactory userManagementModelFactory = UserManagementModelFactory.getInstance();
+		final UserManagementModelFactory userManagementModelFactory = UserManagementModelFactory
+			.getInstance();
 		final UserModel userModel = userManagementModelFactory.newUserModel(lastname,
-				CreateDateExtensions.newDate(1974, 8, 28), firstname, GenderType.MALE, "127.0.0.1", lastname,
-				Locale.GERMAN, "01721745676", "032325444444", "032325444445", addressesService.get(30224)); // Ludwigsburg
+			CreateDateExtensions.newDate(1974, 8, 28), firstname, GenderType.MALE, "127.0.0.1",
+			lastname, Locale.GERMAN, "01721745676", "032325444444", "032325444445",
+			addressesService.get(30224)); // Ludwigsburg
 
-		final UsernameSignUpModel usernameSignUpModel = userManagementModelFactory.newUsernameSignupModel(email, "xxx",
-				"xxx", Boolean.TRUE, username);
+		final UsernameSignUpModel usernameSignUpModel = userManagementModelFactory
+			.newUsernameSignupModel(email, "xxx", "xxx", Boolean.TRUE, username);
 
 		final Set<Roles> roles = createRolesSet();
-		final SignUpUserResult result = userManagementService.signUpUser(usernameSignUpModel, roles, userModel);
-		if (result.getUser() == null) {
+		final SignUpUserResult result = userManagementService.signUpUser(usernameSignUpModel, roles,
+			userModel);
+		if (result.getUser() == null)
+		{
 			final ValidationErrors errors = result.getValidationErrors();
-			if (errors.equals(ValidationErrors.EMAIL_EXISTS_ERROR)) {
+			if (errors.equals(ValidationErrors.EMAIL_EXISTS_ERROR))
+			{
 				return userManagementService.findUserWithEmailOrUsername(email);
 			}
-			if (errors.equals(ValidationErrors.USERNAME_EXISTS_ERROR)) {
+			if (errors.equals(ValidationErrors.USERNAME_EXISTS_ERROR))
+			{
 				return userManagementService.findUserWithEmailOrUsername(username);
 			}
 		}
@@ -107,7 +120,8 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 	}
 
 	@Test(enabled = false)
-	public void testSaveMessageWithRecipients() {
+	public void testSaveMessageWithRecipients()
+	{
 		IMessageContentModel messageModel = new MessageContentModel();
 		ISendInformationModel sendInformationModel = new SendInformationModel();
 		messageModel.setContent("Hello guys,\n\nhow are you?\n\nCheers\n\nMichael");
@@ -121,7 +135,8 @@ public class MessagesBusinessServiceTest extends AbstractTestNGSpringContextTest
 		final Users sender = getUser("Michael", "Knight", "michael.knight@gmail.com", "knight");
 		final Set<Users> recipients = new HashSet<>();
 
-		final Users recipient = getUser("Anton", "Einstein", "anton.einstein@gmail.com", "einstein");
+		final Users recipient = getUser("Anton", "Einstein", "anton.einstein@gmail.com",
+			"einstein");
 		recipients.add(recipient);
 		model.getSendInformationModel().setRecipients(recipients);
 		model.getSendInformationModel().setSender(sender);

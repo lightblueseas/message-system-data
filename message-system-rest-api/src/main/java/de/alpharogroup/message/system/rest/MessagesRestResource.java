@@ -30,6 +30,8 @@ import de.alpharogroup.message.system.service.api.MessageService;
 import de.alpharogroup.service.rs.AbstractRestfulResource;
 
 public class MessagesRestResource extends AbstractRestfulResource<Integer, Message, MessageService>
-		implements MessagesResource {
+	implements
+		MessagesResource
+{
 
 }

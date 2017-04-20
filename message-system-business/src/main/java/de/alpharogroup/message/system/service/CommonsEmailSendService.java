@@ -30,9 +30,12 @@ import org.apache.commons.mail.SimpleEmail;
 
 import de.alpharogroup.message.system.application.models.InfoMessageModel;
 
-public final class CommonsEmailSendService {
+public final class CommonsEmailSendService
+{
 
-	public static void sendEmail(final EmailConfiguration config, InfoMessageModel model) throws EmailException {
+	public static void sendEmail(final EmailConfiguration config, InfoMessageModel model)
+		throws EmailException
+	{
 		// TODO make class for email config...
 		Email email = new SimpleEmail();
 		email.setHostName(config.getHostName());

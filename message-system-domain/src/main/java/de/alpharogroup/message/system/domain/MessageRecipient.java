@@ -42,12 +42,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MessageRecipient extends BaseDomainObject<Integer> {
+public class MessageRecipient extends BaseDomainObject<Integer>
+{
 	/** The serial Version UID */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The message attribute that references to the Entity class
-	 * {@link Message}.
+	 * The message attribute that references to the Entity class {@link Message}.
 	 */
 	private Message message;
 	/**
@@ -55,9 +55,9 @@ public class MessageRecipient extends BaseDomainObject<Integer> {
 	 */
 	private User recipient;
 	/**
-	 * The recipient email as a String object that can be indicate that the
-	 * recipient is a user outside from the system. For instance a user from the
-	 * system makes a recommendation to a friend.
+	 * The recipient email as a String object that can be indicate that the recipient is a user
+	 * outside from the system. For instance a user from the system makes a recommendation to a
+	 * friend.
 	 */
 	private Contactmethod recipientEmail;
 }

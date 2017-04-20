@@ -27,7 +27,8 @@ package de.alpharogroup.message.system.enums;
 /**
  * The enumeration MessageType defines the type of a message.
  */
-public enum MessageType {
+public enum MessageType
+{
 
 	/** The message type is mail. */
 	MAIL,

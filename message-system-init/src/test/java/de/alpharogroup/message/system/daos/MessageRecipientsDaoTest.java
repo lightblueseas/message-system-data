@@ -34,12 +34,14 @@ import org.testng.annotations.Test;
 import de.alpharogroup.message.system.entities.MessageRecipients;
 
 @ContextConfiguration(locations = "classpath:test-applicationContext.xml")
-public class MessageRecipientsDaoTest extends AbstractTestNGSpringContextTests {
+public class MessageRecipientsDaoTest extends AbstractTestNGSpringContextTests
+{
 	@Autowired
 	MessageRecipientsDao messageRecipientsDao;
 
 	@Test(enabled = false)
-	public void testFindAll() {
+	public void testFindAll()
+	{
 		final List<MessageRecipients> all = messageRecipientsDao.findAll();
 		System.out.println(all);
 	}

@@ -58,8 +58,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * The Entity class {@link Messages } is keeping the information for the
- * messages or notes from users.
+ * The Entity class {@link Messages } is keeping the information for the messages or notes from
+ * users.
  */
 @Entity
 @Table(name = "messages")
@@ -71,7 +71,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Messages extends BaseEntity<Integer> implements Cloneable {
+public class Messages extends BaseEntity<Integer> implements Cloneable
+{
 
 	/** The serial Version UID */
 	private static final long serialVersionUID = 920286633675636537L;
@@ -82,14 +83,14 @@ public class Messages extends BaseEntity<Integer> implements Cloneable {
 	@JoinColumn(name = "parent", foreignKey = @ForeignKey(name = "FK_PARENT_MESSAGE_ID"))
 	private Messages parent;
 	/**
-	 * A flag that indicates that the message is deleted from the sender but
-	 * will not really deleted because of references to other messages.
+	 * A flag that indicates that the message is deleted from the sender but will not really deleted
+	 * because of references to other messages.
 	 */
 	@Column(name = "sender_deleted_flag")
 	private Boolean senderDeletedFlag;
 	/**
-	 * A flag that indicates that the message is deleted from the recipient but
-	 * will not really deleted because of references to other messages.
+	 * A flag that indicates that the message is deleted from the recipient but will not really
+	 * deleted because of references to other messages.
 	 */
 	@Column(name = "recipient_deleted_flag")
 	private Boolean recipientDeletedFlag;
@@ -108,8 +109,7 @@ public class Messages extends BaseEntity<Integer> implements Cloneable {
 	@Type(type = "messagetypeConverter")
 	private MessageType messagetype;
 	/**
-	 * A flag that indicates if the message is readed(at least opened) from the
-	 * recipient(s).
+	 * A flag that indicates if the message is readed(at least opened) from the recipient(s).
 	 */
 	@Column(name = "read_flag")
 	private Boolean readFlag;
@@ -147,7 +147,8 @@ public class Messages extends BaseEntity<Integer> implements Cloneable {
 	 *
 	 * @return true, if is spam flag
 	 */
-	public boolean isSpamFlag() {
+	public boolean isSpamFlag()
+	{
 		return getSpamFlag() != null && getSpamFlag().booleanValue();
 	}
 

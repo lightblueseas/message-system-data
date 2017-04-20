@@ -30,7 +30,8 @@ import de.alpharogroup.xml.XmlExtensions;
 /**
  * The Class ReplyMessageModel.
  */
-public class ReplyMessageModel extends BaseMessageModel {
+public class ReplyMessageModel extends BaseMessageModel
+{
 
 	/**
 	 * The serialVersionUID.
@@ -51,7 +52,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 *
 	 * @return the parent
 	 */
-	public Messages getParent() {
+	public Messages getParent()
+	{
 		return parent;
 	}
 
@@ -60,7 +62,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * 
 	 * @return the response message
 	 */
-	public String getResponseMessage() {
+	public String getResponseMessage()
+	{
 		return responseMessage;
 	}
 
@@ -69,7 +72,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * 
 	 * @return the response subject
 	 */
-	public String getResponseSubject() {
+	public String getResponseSubject()
+	{
 		return responseSubject;
 	}
 
@@ -79,7 +83,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * @param parent
 	 *            the new parent
 	 */
-	public void setParent(Messages parent) {
+	public void setParent(Messages parent)
+	{
 		this.parent = parent;
 	}
 
@@ -89,7 +94,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * @param responseMessage
 	 *            the new response message
 	 */
-	public void setResponseMessage(final String responseMessage) {
+	public void setResponseMessage(final String responseMessage)
+	{
 		this.responseMessage = responseMessage;
 	}
 
@@ -99,7 +105,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * @param responseSubject
 	 *            the new response subject
 	 */
-	public void setResponseSubject(final String responseSubject) {
+	public void setResponseSubject(final String responseSubject)
+	{
 		this.responseSubject = responseSubject;
 	}
 
@@ -107,7 +114,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ReplyMessageModel toObject(String xml) {
+	public ReplyMessageModel toObject(String xml)
+	{
 		ReplyMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
@@ -116,7 +124,8 @@ public class ReplyMessageModel extends BaseMessageModel {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}

@@ -30,7 +30,8 @@ import de.alpharogroup.message.system.application.models.send.api.IMessageConten
 import de.alpharogroup.xml.XmlExtensions;
 import de.alpharogroup.xml.api.Transformable;
 
-public class InfoMessageModel implements Serializable, Transformable<InfoMessageModel> {
+public class InfoMessageModel implements Serializable, Transformable<InfoMessageModel>
+{
 
 	/**
 	 * 
@@ -44,43 +45,53 @@ public class InfoMessageModel implements Serializable, Transformable<InfoMessage
 	/** The data of message. */
 	private IMessageContentModel messageContentModel;
 
-	public String getApplicationDomainName() {
+	public String getApplicationDomainName()
+	{
 		return applicationDomainName;
 	}
 
-	public String getApplicationSenderAddress() {
+	public String getApplicationSenderAddress()
+	{
 		return applicationSenderAddress;
 	}
 
-	public IMessageContentModel getMessageContentModel() {
+	public IMessageContentModel getMessageContentModel()
+	{
 		return messageContentModel;
 	}
 
-	public String getRecipientEmailContact() {
+	public String getRecipientEmailContact()
+	{
 		return recipientEmailContact;
 	}
 
-	public String getRecipientFullName() {
+	public String getRecipientFullName()
+	{
 		return recipientFullName;
 	}
 
-	public void setApplicationDomainName(String applicationDomainName) {
+	public void setApplicationDomainName(String applicationDomainName)
+	{
 		this.applicationDomainName = applicationDomainName;
 	}
 
-	public void setApplicationSenderAddress(String applicationSenderAddress) {
+	public void setApplicationSenderAddress(String applicationSenderAddress)
+	{
 		this.applicationSenderAddress = applicationSenderAddress;
 	}
 
-	public void setMessageContentModel(IMessageContentModel messageModel) {
+	public void setMessageContentModel(IMessageContentModel messageModel)
+	{
 		this.messageContentModel = messageModel;
 	}
 
-	public void setRecipientEmailContact(String recipientEmailContact) {
+	public void setRecipientEmailContact(String recipientEmailContact)
+	{
 		this.recipientEmailContact = recipientEmailContact;
 	}
 
-	public void setRecipientFullName(String recipientFullName) {
+	public void setRecipientFullName(String recipientFullName)
+	{
 		this.recipientFullName = recipientFullName;
 	}
 
@@ -88,7 +99,8 @@ public class InfoMessageModel implements Serializable, Transformable<InfoMessage
 	 * {@inheritDoc}
 	 */
 	@Override
-	public InfoMessageModel toObject(String xml) {
+	public InfoMessageModel toObject(String xml)
+	{
 		InfoMessageModel model = XmlExtensions.toObjectWithXStream(xml);
 		return model;
 	}
@@ -97,7 +109,8 @@ public class InfoMessageModel implements Serializable, Transformable<InfoMessage
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String toXml() {
+	public String toXml()
+	{
 		String xml = XmlExtensions.toXmlWithXStream(this);
 		return xml;
 	}

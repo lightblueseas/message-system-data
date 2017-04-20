@@ -41,14 +41,16 @@ import de.alpharogroup.resourcebundle.locale.Locales;
 /**
  * The Class MessageComposer.
  */
-public class EmailComposer {
+public class EmailComposer
+{
 
 	/** The Constant logger. */
 	protected static final Logger LOGGER = LoggerFactory.getLogger(EmailComposer.class.getName());
 
 	public static InfoMessageModel createEmailForMemberSendResponse(String applicationSenderAddress,
-			final String applicationDomainName, String username, String recipientFullName,
-			final String recipientEmailContact, final String messagePart, Locale locale) {
+		final String applicationDomainName, String username, String recipientFullName,
+		final String recipientEmailContact, final String messagePart, Locale locale)
+	{
 		String xmlMailTemplatePath = "mail/templates/response/sent/";
 		String xmlMailTemplateFileName = "MemberSendResponse";
 		String xmlMailTemplateName = xmlMailTemplatePath + xmlMailTemplateFileName;
@@ -58,13 +60,20 @@ public class EmailComposer {
 		context.put("messagePart", messagePart);
 		context.put("applicationDomainName", applicationDomainName);
 		IMessageContentModel messageModel = null;
-		try {
+		try
+		{
 			messageModel = MessageComposer.createMessageModel(context, xmlMailTemplateName, locale);
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			LOGGER.error("Xml file could not be found.", e);
-		} catch (ParseException e) {
+		}
+		catch (ParseException e)
+		{
 			LOGGER.error("Template could not be parsed.", e);
-		} catch (URISyntaxException e) {
+		}
+		catch (URISyntaxException e)
+		{
 			LOGGER.error("Xml file could not be found.", e);
 		}
 
@@ -98,10 +107,11 @@ public class EmailComposer {
 	 *            the locale
 	 * @return the info message model
 	 */
-	public static InfoMessageModel createEmailMessageForForgottenPassword(String applicationSenderAddress,
-			final String applicationDomainName, String username, String recipientFullName,
-			final String recipientEmailContact, final String newPassword, String urlForForgottenPassword,
-			Locale locale) {
+	public static InfoMessageModel createEmailMessageForForgottenPassword(
+		String applicationSenderAddress, final String applicationDomainName, String username,
+		String recipientFullName, final String recipientEmailContact, final String newPassword,
+		String urlForForgottenPassword, Locale locale)
+	{
 		String xmlMailTemplatePath = "mail/templates/forgotten/pw/";
 		String xmlMailTemplateFileName = "ForgottenPassword";
 		String xmlMailTemplateName = xmlMailTemplatePath + xmlMailTemplateFileName;
@@ -112,13 +122,20 @@ public class EmailComposer {
 		context.put("newPassword", newPassword);
 		context.put("applicationDomainName", applicationDomainName);
 		IMessageContentModel messageModel = null;
-		try {
+		try
+		{
 			messageModel = MessageComposer.createMessageModel(context, xmlMailTemplateName, locale);
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			LOGGER.error("Xml file could not be found.", e);
-		} catch (ParseException e) {
+		}
+		catch (ParseException e)
+		{
 			LOGGER.error("Template could not be parsed.", e);
-		} catch (URISyntaxException e) {
+		}
+		catch (URISyntaxException e)
+		{
 			LOGGER.error("Xml file could not be found.", e);
 		}
 
@@ -131,10 +148,12 @@ public class EmailComposer {
 		return infoMessageModel;
 	}
 
-	public static InfoMessageModel createEmailMessageForRecommendProfile(String applicationSenderAddress,
-			final String applicationDomainName, String memberUsername, String recipientFullName,
-			final String recipientEmailContact, final String profileData, final String profileLink,
-			String invitationText, final String senderProfileLink, String signupLink, Locale locale) {
+	public static InfoMessageModel createEmailMessageForRecommendProfile(
+		String applicationSenderAddress, final String applicationDomainName, String memberUsername,
+		String recipientFullName, final String recipientEmailContact, final String profileData,
+		final String profileLink, String invitationText, final String senderProfileLink,
+		String signupLink, Locale locale)
+	{
 		// TODO set paths and filename and context...
 		String xmlMailTemplatePath = "mail/templates/recommend/profile/";
 		String xmlMailTemplateFileName = "MemberSendRecommendation";
@@ -148,13 +167,20 @@ public class EmailComposer {
 		context.put("signupLink", signupLink);
 		context.put("applicationDomainName", applicationDomainName);
 		IMessageContentModel messageModel = null;
-		try {
+		try
+		{
 			messageModel = MessageComposer.createMessageModel(context, xmlMailTemplateName, locale);
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			LOGGER.error("Xml file could not be found.", e);
-		} catch (ParseException e) {
+		}
+		catch (ParseException e)
+		{
 			LOGGER.error("Template could not be parsed.", e);
-		} catch (URISyntaxException e) {
+		}
+		catch (URISyntaxException e)
+		{
 			LOGGER.error("Xml file could not be found.", e);
 		}
 
@@ -179,9 +205,12 @@ public class EmailComposer {
 	 * @throws URISyntaxException
 	 *             the URI syntax exception
 	 */
-	public static final void main(String... strings) throws IOException, ParseException, URISyntaxException {
-		InfoMessageModel model = EmailComposer.createEmailMessageForForgottenPassword("xy@z.com", "z.com", "abc",
-				"Albert Einstein", "a.e@gmail.com", "yyy", "http://www.xy.com/bla=fasel", Locales.GREEK);
+	public static final void main(String... strings)
+		throws IOException, ParseException, URISyntaxException
+	{
+		InfoMessageModel model = EmailComposer.createEmailMessageForForgottenPassword("xy@z.com",
+			"z.com", "abc", "Albert Einstein", "a.e@gmail.com", "yyy",
+			"http://www.xy.com/bla=fasel", Locales.GREEK);
 		System.out.println(model.getMessageContentModel().getSubject());
 		Map<String, Object> context = new HashMap<String, Object>();
 		context.put("recipientFullName", "Albert Einstein");
@@ -190,19 +219,19 @@ public class EmailComposer {
 		context.put("newPassword", "xxx");
 		context.put("applicationDomainName", "z.com");
 		IMessageContentModel messageModel = MessageComposer.createMessageModel(context,
-				"mail/templates/forgotten/pw/ForgottenPassword", null);
+			"mail/templates/forgotten/pw/ForgottenPassword", null);
 		System.out.println("Subject:\n" + messageModel.getSubject());
 		System.out.println("Content:\n" + messageModel.getContent());
-		messageModel = MessageComposer.createMessageModel(context, "mail/templates/forgotten/pw/ForgottenPassword",
-				Locales.GREEK);
+		messageModel = MessageComposer.createMessageModel(context,
+			"mail/templates/forgotten/pw/ForgottenPassword", Locales.GREEK);
 		System.out.println("Subject:\n" + messageModel.getSubject());
 		System.out.println("Content:\n" + messageModel.getContent());
-		messageModel = MessageComposer.createMessageModel(context, "mail/templates/forgotten/pw/ForgottenPassword",
-				Locale.GERMAN);
+		messageModel = MessageComposer.createMessageModel(context,
+			"mail/templates/forgotten/pw/ForgottenPassword", Locale.GERMAN);
 		System.out.println("Subject:\n" + messageModel.getSubject());
 		System.out.println("Content:\n" + messageModel.getContent());
-		messageModel = MessageComposer.createMessageModel(context, "mail/templates/forgotten/pw/ForgottenPassword",
-				Locale.ENGLISH);
+		messageModel = MessageComposer.createMessageModel(context,
+			"mail/templates/forgotten/pw/ForgottenPassword", Locale.ENGLISH);
 		System.out.println("Subject:\n" + messageModel.getSubject());
 		System.out.println("Content:\n" + messageModel.getContent());
 	}

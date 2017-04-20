@@ -34,6 +34,7 @@ import de.alpharogroup.message.system.entities.Messages;
  * The class {@link MessagesMapper}.
  */
 @Component
-public class MessagesMapper extends AbstractEntityDOMapper<Messages, Message> {
+public class MessagesMapper extends AbstractEntityDOMapper<Messages, Message>
+{
 
 }

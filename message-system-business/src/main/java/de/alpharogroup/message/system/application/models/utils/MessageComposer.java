@@ -47,7 +47,8 @@ import de.alpharogroup.velocity.VelocityExtensions;
 /**
  * The Class MessageComposer.
  */
-public class MessageComposer {
+public class MessageComposer
+{
 
 	/** The Constant logger. */
 	protected static final Logger LOGGER = LoggerFactory.getLogger(MessageComposer.class.getName());
@@ -69,8 +70,10 @@ public class MessageComposer {
 	 * @throws URISyntaxException
 	 *             the URI syntax exception
 	 */
-	public static IMessageContentModel createMessageModel(Map<String, Object> contextModel, String xmlMailTemplateName,
-			Locale locale) throws IOException, ParseException, URISyntaxException {
+	public static IMessageContentModel createMessageModel(Map<String, Object> contextModel,
+		String xmlMailTemplateName, Locale locale)
+		throws IOException, ParseException, URISyntaxException
+	{
 		String localizedName = getXmlMailTemplateName(xmlMailTemplateName, locale, false);
 		IMessageContentModel xmlMailTemplate = getEmailTemplate(localizedName);
 
@@ -91,19 +94,19 @@ public class MessageComposer {
 	}
 
 	/**
-	 * Gets the email template as a Message Model that contains the velocity
-	 * templates.
+	 * Gets the email template as a Message Model that contains the velocity templates.
 	 *
 	 * @param name
-	 *            The resource name that represents an IMessageModel as an xml
-	 *            file.
+	 *            The resource name that represents an IMessageModel as an xml file.
 	 * @return the email template
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 * @throws URISyntaxException
 	 *             the URI syntax exception
 	 */
-	public static IMessageContentModel getEmailTemplate(String name) throws IOException, URISyntaxException {
+	public static IMessageContentModel getEmailTemplate(String name)
+		throws IOException, URISyntaxException
+	{
 		InputStream is = ClassExtensions.getResourceAsStream(name);
 		String xmlString = ReadFileExtensions.inputStream2String(is);
 		IMessageContentModel messageModel = new MessageContentModel().toObject(xmlString);
@@ -121,7 +124,9 @@ public class MessageComposer {
 	 *            the with country
 	 * @return the xml mail template name
 	 */
-	public static String getXmlMailTemplateName(String xmlMailTemplateName, Locale locale, boolean withCountry) {
+	public static String getXmlMailTemplateName(String xmlMailTemplateName, Locale locale,
+		boolean withCountry)
+	{
 		StringBuilder localizedName = new StringBuilder();
 		localizedName.append(xmlMailTemplateName);
 		localizedName.append(LocaleExtensions.getLocaleFileSuffix(locale, withCountry));

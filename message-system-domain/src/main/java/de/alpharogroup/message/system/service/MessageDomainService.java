@@ -40,8 +40,12 @@ import lombok.Setter;
 
 @Transactional
 @Service("messageDomainService")
-public class MessageDomainService extends AbstractDomainService<Integer, Message, Messages, MessagesDao, MessagesMapper>
-		implements MessageService {
+public class MessageDomainService
+	extends
+		AbstractDomainService<Integer, Message, Messages, MessagesDao, MessagesMapper>
+	implements
+		MessageService
+{
 
 	/** The {@link MessagesService}. */
 	@Autowired
@@ -56,7 +60,8 @@ public class MessageDomainService extends AbstractDomainService<Integer, Message
 	 *            the new {@link MessagesDao}.
 	 */
 	@Autowired
-	public void setMessagesDao(final MessagesDao messagesDao) {
+	public void setMessagesDao(final MessagesDao messagesDao)
+	{
 		setDao(messagesDao);
 	}
 
@@ -67,7 +72,8 @@ public class MessageDomainService extends AbstractDomainService<Integer, Message
 	 *            the new {@link MessagesMapper}.
 	 */
 	@Autowired
-	public void setMessagesMapper(MessagesMapper mapper) {
+	public void setMessagesMapper(MessagesMapper mapper)
+	{
 		setMapper(mapper);
 	}
 

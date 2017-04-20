@@ -36,7 +36,8 @@ import de.alpharogroup.user.entities.Users;
 /**
  * The Interface MessagesService.
  */
-public interface MessagesService extends BusinessService<Messages, Integer> {
+public interface MessagesService extends BusinessService<Messages, Integer>
+{
 
 	/**
 	 * Find all children and childrens children.
@@ -86,8 +87,7 @@ public interface MessagesService extends BusinessService<Messages, Integer> {
 	List<Messages> findReplyMessages(final Users user);
 
 	/**
-	 * Find sent messages from the given user that represents the sender of the
-	 * message.
+	 * Find sent messages from the given user that represents the sender of the message.
 	 *
 	 * @param user
 	 *            the user
@@ -116,8 +116,8 @@ public interface MessagesService extends BusinessService<Messages, Integer> {
 	boolean isRecipientFrom(Messages message, Users user);
 
 	/**
-	 * Creates a Messages object and saves it with all recipients from the given
-	 * BaseMessageModel object.
+	 * Creates a Messages object and saves it with all recipients from the given BaseMessageModel
+	 * object.
 	 *
 	 * @param model
 	 *            the model

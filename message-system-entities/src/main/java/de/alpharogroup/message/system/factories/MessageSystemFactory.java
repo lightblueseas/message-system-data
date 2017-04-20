@@ -37,7 +37,8 @@ import de.alpharogroup.user.management.entities.Contactmethods;
 /**
  * A factory for creating Domain objects for the message system.
  */
-public class MessageSystemFactory implements Serializable {
+public class MessageSystemFactory implements Serializable
+{
 
 	/** The Constant instance. */
 	private static final MessageSystemFactory instance = new MessageSystemFactory();
@@ -52,14 +53,16 @@ public class MessageSystemFactory implements Serializable {
 	 * 
 	 * @return single instance of MessageSystemFactory
 	 */
-	public static MessageSystemFactory getInstance() {
+	public static MessageSystemFactory getInstance()
+	{
 		return instance;
 	}
 
 	/**
 	 * Instantiates a new MessageSystemFactory object.
 	 */
-	private MessageSystemFactory() {
+	private MessageSystemFactory()
+	{
 		super();
 	}
 
@@ -74,7 +77,9 @@ public class MessageSystemFactory implements Serializable {
 	 *            A valid Contactmethods object
 	 * @return MessageRecipients A MessageRecipients object
 	 */
-	public MessageRecipients newMessageRecipients(Integer id, Messages message, Contactmethods recipientEmail) {
+	public MessageRecipients newMessageRecipients(Integer id, Messages message,
+		Contactmethods recipientEmail)
+	{
 		return newMessageRecipients(id, message, null, recipientEmail);
 	}
 
@@ -89,7 +94,8 @@ public class MessageSystemFactory implements Serializable {
 	 *            A valid Users object
 	 * @return MessageRecipients A MessageRecipients object
 	 */
-	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient) {
+	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient)
+	{
 		return newMessageRecipients(id, message, recipient, null);
 	}
 
@@ -107,7 +113,8 @@ public class MessageSystemFactory implements Serializable {
 	 * @return MessageRecipients A MessageRecipients object
 	 */
 	public MessageRecipients newMessageRecipients(Integer id, Messages message, Users recipient,
-			Contactmethods recipientEmail) {
+		Contactmethods recipientEmail)
+	{
 		MessageRecipients messageRecipients = new MessageRecipients();
 		messageRecipients.setId(id);
 		messageRecipients.setMessage(message);
@@ -125,7 +132,8 @@ public class MessageSystemFactory implements Serializable {
 	 *            the recipient
 	 * @return the message recipients
 	 */
-	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient) {
+	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient)
+	{
 		return newMessageRecipients(null, message, recipient);
 	}
 
@@ -141,7 +149,8 @@ public class MessageSystemFactory implements Serializable {
 	 * @return the message recipients
 	 */
 	public MessageRecipients newMessageRecipients(final Messages message, final Users recipient,
-			Contactmethods recipientEmail) {
+		Contactmethods recipientEmail)
+	{
 		return newMessageRecipients(null, message, recipient, recipientEmail);
 	}
 
@@ -180,10 +189,11 @@ public class MessageSystemFactory implements Serializable {
 	 *            the recipient deleted flag
 	 * @return the messages
 	 */
-	public Messages newMessages(Boolean deletedFlag, Boolean failed2sentemail, String folder, Integer id,
-			String messageContent, MessageType messagetype, Boolean readFlag, Users sender, Contactmethods senderEmail,
-			Date sentDate, Boolean spamFlag, MessageState state, String subject, Messages parent,
-			Boolean recipientDeletedFlag) {
+	public Messages newMessages(Boolean deletedFlag, Boolean failed2sentemail, String folder,
+		Integer id, String messageContent, MessageType messagetype, Boolean readFlag, Users sender,
+		Contactmethods senderEmail, Date sentDate, Boolean spamFlag, MessageState state,
+		String subject, Messages parent, Boolean recipientDeletedFlag)
+	{
 		Messages messages = new Messages();
 		messages.setSenderDeletedFlag(deletedFlag);
 		messages.setFailed2sentemail(failed2sentemail);
@@ -236,11 +246,14 @@ public class MessageSystemFactory implements Serializable {
 	 *            the recipient deleted flag
 	 * @return the messages
 	 */
-	public Messages newMessages(Boolean deletedFlag, Boolean failed2sentemail, String folder, Integer id,
-			String messageContent, MessageType messagetype, Boolean readFlag, Users sender, Date sentDate,
-			Boolean spamFlag, MessageState state, String subject, Messages parent, Boolean recipientDeletedFlag) {
-		return newMessages(deletedFlag, failed2sentemail, folder, id, messageContent, messagetype, readFlag, sender,
-				null, sentDate, spamFlag, state, subject, parent, recipientDeletedFlag);
+	public Messages newMessages(Boolean deletedFlag, Boolean failed2sentemail, String folder,
+		Integer id, String messageContent, MessageType messagetype, Boolean readFlag, Users sender,
+		Date sentDate, Boolean spamFlag, MessageState state, String subject, Messages parent,
+		Boolean recipientDeletedFlag)
+	{
+		return newMessages(deletedFlag, failed2sentemail, folder, id, messageContent, messagetype,
+			readFlag, sender, null, sentDate, spamFlag, state, subject, parent,
+			recipientDeletedFlag);
 	}
 
 	/**
@@ -270,11 +283,13 @@ public class MessageSystemFactory implements Serializable {
 	 *            the subject
 	 * @return the messages
 	 */
-	public Messages newMessages(final Boolean deletedFlag, final Boolean failed2sentemail, final String folder,
-			final String messageContent, final MessageType messagetype, final Boolean readFlag, final Users sender,
-			final Date sentDate, final Boolean spamFlag, final MessageState state, final String subject) {
-		return newMessages(deletedFlag, failed2sentemail, folder, null, messageContent, messagetype, readFlag, sender,
-				sentDate, spamFlag, state, subject, null, Boolean.FALSE);
+	public Messages newMessages(final Boolean deletedFlag, final Boolean failed2sentemail,
+		final String folder, final String messageContent, final MessageType messagetype,
+		final Boolean readFlag, final Users sender, final Date sentDate, final Boolean spamFlag,
+		final MessageState state, final String subject)
+	{
+		return newMessages(deletedFlag, failed2sentemail, folder, null, messageContent, messagetype,
+			readFlag, sender, sentDate, spamFlag, state, subject, null, Boolean.FALSE);
 	}
 
 	/**
@@ -306,11 +321,12 @@ public class MessageSystemFactory implements Serializable {
 	 *            the parent of the message to create.
 	 * @return the messages
 	 */
-	public Messages newMessages(final Boolean deletedFlag, final Boolean failed2sentemail, final String folder,
-			final String messageContent, final MessageType messagetype, final Boolean readFlag, final Users sender,
-			final Date sentDate, final Boolean spamFlag, final MessageState state, final String subject,
-			Messages parent) {
-		return newMessages(deletedFlag, failed2sentemail, folder, null, messageContent, messagetype, readFlag, sender,
-				sentDate, spamFlag, state, subject, parent, Boolean.FALSE);
+	public Messages newMessages(final Boolean deletedFlag, final Boolean failed2sentemail,
+		final String folder, final String messageContent, final MessageType messagetype,
+		final Boolean readFlag, final Users sender, final Date sentDate, final Boolean spamFlag,
+		final MessageState state, final String subject, Messages parent)
+	{
+		return newMessages(deletedFlag, failed2sentemail, folder, null, messageContent, messagetype,
+			readFlag, sender, sentDate, spamFlag, state, subject, parent, Boolean.FALSE);
 	}
 }
