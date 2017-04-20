@@ -26,6 +26,13 @@
 	<context:component-scan base-package="de.alpharogroup.resource.system.mapper" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.service.api" />
 	<context:component-scan base-package="de.alpharogroup.resource.system.service" />
+	
+	<context:component-scan base-package="de.alpharogroup.user.repositories" />
+	<context:component-scan base-package="de.alpharogroup.user.entities" />
+	<context:component-scan base-package="de.alpharogroup.user.mapper" />
+	<context:component-scan base-package="de.alpharogroup.user.service.api" />
+	<context:component-scan base-package="de.alpharogroup.user.service" />
+	<context:component-scan base-package="de.alpharogroup.user.service.mapper" />
 
 	<context:component-scan base-package="de.alpharogroup.user.management.daos" />
 	<context:component-scan base-package="de.alpharogroup.user.management.entities" />

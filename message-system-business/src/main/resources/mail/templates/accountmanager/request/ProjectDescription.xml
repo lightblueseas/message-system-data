@@ -1,0 +1,86 @@
+<message>
+<subject>
+Projektanfrage 
+</subject>
+<content>
+==================================================================================================== 
+Begrüssung mit Name,
+====================================================================================================
+Beispiel:
+Schönen guten Tag,
+ 
+====================================================================================================
+Einleitung der Anfrage.
+
+====================================================================================================
+Beispiel:
+ich habe eine Anfrage von einem unserer Endkunden erhalten, die vielleicht interessant für Sie ist:
+====================================================================================================
+
+Was wird gesucht?
+Laufzeit: 
+Auslastung:
+Ort:
+====================================================================================================
+Beispiel:
+Gesucht wird ein Java-Entwickler!
+ 
+Laufzeit: ab April bis Dez. 2013 + Verlängerung!!
+Auslastung: 40 Std., die von Mo.-Do. in den Räumen des Kunden erbracht werden.
+Ort: Berlin ? KEIN REMOTE MÖGLICH
+====================================================================================================
+
+Projektaufgaben:
+====================================================================================================
+Beispiel:
+Der Entwickler hat die Aufgabe, bei der Weiterentwicklung und Wartung der Software für die Fachbereiche mitzuwirken. Zu seinen Aufgaben gehört die Bearbeitung von anfallenden Entwicklungsaufträgen einschl. der Behebung von Störungsmeldungen. Die Ausführung der Arbeiten und die Implementierung werden nachvollziehbar dokumentiert.
+Bei der Erfüllung seiner Aufgaben berücksichtigt er die vorhandenen Qualitätsmaßstäbe, wie z.B. die Modellierungs- / Programmierrichtlinien und den Entwicklertestleitfaden. Die Lösung der Aufgaben erfolgt unter Berücksichtigung des vorhandenen Frameworks.
+====================================================================================================
+
+Anforderungen:
+====================================================================================================
+Beispiel:
++ Umfangreiche Erfahrung in der Java-Entwicklung
++ JDK 1.6
++ EJB 1.1, 2 und 3
++ JBoss und IBM Websphere Application Server
++ Avantis
++ DB2
++ GUI
+====================================================================================================
+
+Weitere Anforderungen:
+====================================================================================================
+Beispiel:
+Ihnen ist es möglich, Anforderungen zu abstrahieren und zu generalisieren. Sie haben Erfahrungen im Bereich eines Workflowmanagementsystems / Dokumentenmanagementsystem sammeln können. Sie haben Kenntnisse in der Modellierung von Geschäftsobjektmodellen und der darauf basierenden Code-Generierung.
+Entwicklertests zu schreiben ist für Sie selbstverständlich. Die gängigen Testframeworks JUnit und Easy- o. PowerMock beherrschen Sie fließend.
+Mehrjährige Erfahrung in der System- und Entwicklungsarchitektur wird vorausgesetzt.
+Idealerweise kennen Sie sich mit Designerstellung aus und können komplexe Sachverhalte mit UML verständlich abbilden. UML Know-how wird auch in unserer MDA-basierten Entwicklung benötigt.
+====================================================================================================
+
+Frage ob interesse besteht und was der Freiberufler machen soll bei interesse.
+====================================================================================================
+Beispiel:
+Sie haben Interesse an diesem Projekt und sind verfügbar?
+====================================================================================================
+
+Abschluss der Email
+====================================================================================================
+Beispiel:
+Dann senden Sie mir bitte bis Freitag, 22.03.2013 Ihren aktuellen Lebenslauf im Word Format zu und nennen mir Ihren frühest möglichen Einstiegstermin und Ihren gewünschten all-in Stundensatz.
+ 
+Freue mich auf Ihr Feedback.
+ 
+Viele Grüße aus Ludwigsburg
+ 
+Asterios Raptis
+====================================================================================================
+
+PS:Wenn kein interesse von Freiberufler fragen ob dieser jemand kennt der diese Aufgabe übernehmen könnte.
+====================================================================================================
+Beispiel:
+PS: Spielen Sie mit dem Gedanken, in Festanstellung zu wechseln? Die objective partner AG wächst kräftig und daher suchen wir ständig nach hervorragenden Mitarbeitern für unser Unternehmen (keine Personalvermittlung!!!). Senden Sie mir am besten gleich Ihren Lebenslauf zu! Ich freu mich drauf!!
+====================================================================================================
+
+</content>
+</message>
