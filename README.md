@@ -1,14 +1,20 @@
-# message-system-data
+# Overview
 
 Parent project that holds module projects for the persistence of message data.
 
 The project holds backend data for simple message management.
 
+# ERD-Diagramm
+
+The erd-diagramm for this database looks as follows: ![erd-diagramm](https://raw.githubusercontent.com/lightblueseas/message-system-data/develop/message-system-init/src/main/resources/erd/message-system-erd.jpa.png)
+
+This erd-diagramm was created with [Jeddict plugin from netbeans as JPA Modeler](http://plugins.netbeans.org/plugin/53057/jpa-modeler)  and [Jeddict](https://jeddict.github.io/)
+
 ## License
 
 The source code comes under the liberal MIT License, making message-system-data great for all types of applications that want to send and persist messages.
 
-# Build status and latest maven version
+# Build status
 [![Build Status](https://travis-ci.org/lightblueseas/message-system-data.svg?branch=master)](https://travis-ci.org/lightblueseas/message-system-data)
 
 ## Maven Central
@@ -121,6 +127,9 @@ Add the following maven dependency to your project `pom.xml` if you want to impo
 			</dependency>
 			...
 		</dependencies>
+		 
+## Open Issues
+[![Open Issues](https://img.shields.io/github/issues/astrapi69/message-system-data.svg?style=flat)](https://github.com/astrapi69/message-system-data/issues) 
 
 ## Want to Help and improve it? ###
 
