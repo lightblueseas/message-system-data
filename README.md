@@ -15,6 +15,7 @@ This erd-diagramm was created with [Jeddict plugin from netbeans as JPA Modeler]
 The source code comes under the liberal MIT License, making message-system-data great for all types of applications that want to send and persist messages.
 
 # Build status
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6846d666041c4848b3ab2b49f90feb95)](https://www.codacy.com/app/tatjana19/message-system-data?utm_source=github.com&utm_medium=referral&utm_content=lightblueseas/message-system-data&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/lightblueseas/message-system-data.svg?branch=master)](https://travis-ci.org/lightblueseas/message-system-data)
 
 ## Maven Central
