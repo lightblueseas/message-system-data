@@ -1,17 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>de.alpharogroup</groupId>
 		<artifactId>persistence-api</artifactId>
-		<version>3.32.0</version>
+		<version>3.35.1</version>
 		<relativePath />
 	</parent>
 
 	<artifactId>message-system-data</artifactId>
 	<packaging>pom</packaging>
-	<version>3.12.0</version>
+	<version>3.15.0-SNAPSHOT</version>
 	<inceptionYear>2015</inceptionYear>
 
 	<name>${project.artifactId}</name>
@@ -27,7 +27,7 @@
 		<developerConnection>scm:git:git@github.com:lightblueseas/message-system-data.git</developerConnection>
 		<url>git:@github.com:lightblueseas/message-system-data.git</url>
 	</scm>
-	
+
 	<developers>
 
 		<developer>
@@ -41,7 +41,7 @@
 		</developer>
 
 	</developers>
-	
+
 	<licenses>
 		<license>
 			<name>MIT License</name>
@@ -76,6 +76,8 @@
 		<!-- EXTERNAL LIBRARIES versions -->
 		<commons-email.version>1.4</commons-email.version>
 		<subethasmtp.version>3.1.7</subethasmtp.version>
+		<!-- velocity-extensions version -->
+		<velocity-extensions.version>1.0.0</velocity-extensions.version>
 		<!-- USER-DATA versions -->
 		<user-data.version>${project.version}</user-data.version>
 		<user-entities.version>${user-data.version}</user-entities.version>
@@ -140,7 +142,7 @@
 				<artifactId>user-domain</artifactId>
 				<version>${user-domain.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>user-rest-api</artifactId>
@@ -164,12 +166,12 @@
 				<artifactId>user-management-domain</artifactId>
 				<version>${user-management-domain.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>user-management-rest-api</artifactId>
 				<version>${user-management-rest-api.version}</version>
-			</dependency>			
+			</dependency>
 			<!-- RESOURCE-SYSTEM-DATA DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
@@ -182,17 +184,23 @@
 				<artifactId>resource-system-business</artifactId>
 				<version>${resource-system-business.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>resource-system-rest-api</artifactId>
 				<version>${resource-system-rest-api.version}</version>
-			</dependency>			
+			</dependency>
 			<!-- NEW EXTENSIONS LIB DEPENDENCIES -->
 			<dependency>
 				<groupId>de.alpharogroup</groupId>
 				<artifactId>email-tails</artifactId>
 				<version>${email-tails.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>de.alpharogroup</groupId>
+				<artifactId>velocity-extensions</artifactId>
+				<version>${velocity-extensions.version}</version>
 			</dependency>
 			<!-- APACHE COMMONS DEPENDENCIES -->
 			<dependency>

@@ -31,20 +31,20 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 
 import de.alpharogroup.email.send.SendEmail;
-import de.alpharogroup.resourcebundle.properties.PropertiesExtensions;
+import de.alpharogroup.resourcebundle.properties.PropertiesFileExtensions;
 
 public final class EmailSendProperties
 {
 
 	public static Properties getEmailSendProperties() throws IOException
 	{
-		Properties properties = PropertiesExtensions.loadProperties("emailsender.properties");
+		final Properties properties = PropertiesFileExtensions.loadProperties("emailsender.properties");
 		return properties;
 	}
 
 	public static Properties getGmailProperties()
 	{
-		Properties gmailProperties = new Properties();
+		final Properties gmailProperties = new Properties();
 		gmailProperties.put("mail.smtp.auth", "true");
 		gmailProperties.put("mail.smtp.starttls.enable", "true");
 		gmailProperties.put("mail.smtp.host", "smtp.gmail.com");
@@ -55,10 +55,11 @@ public final class EmailSendProperties
 	public static SendEmail getGmailSender(final String username, final String password)
 		throws IOException, MessagingException
 	{
-		Properties properties = EmailSendProperties.getGmailProperties();
+		final Properties properties = EmailSendProperties.getGmailProperties();
 
-		SendEmail sender = new SendEmail(properties, new javax.mail.Authenticator()
+		final SendEmail sender = new SendEmail(properties, new javax.mail.Authenticator()
 		{
+			@Override
 			protected PasswordAuthentication getPasswordAuthentication()
 			{
 				return new PasswordAuthentication(username, password);
