@@ -24,7 +24,7 @@ Class-Path: message-system-rest-api.jar rest-api-3.35.1.jar domain-api
  activation-1.1.1.jar message-system-domain.jar message-system-entitie
  s.jar user-entities-3.15.0-SNAPSHOT.jar spring-context-4.3.9.RELEASE.
  jar spring-aop-4.3.9.RELEASE.jar spring-expression-4.3.9.RELEASE.jar 
- data-usertype-3.35.1.jar postgresql-42.1.1.jar auth-security-4.21.0.j
+ data-usertype-3.35.1.jar postgresql-42.1.1.jar auth-security-4.23.1.j
  ar randomizer-4.22.0.jar vintage-time-4.11.0.jar crypt-data-4.22.0.ja
  r bcpkix-jdk15on-1.55.jar bcprov-jdk15on-1.55.jar jsr305-3.0.2.jar re
  sourcebundle-inspector-2.15.1.jar nv-i18n-1.21.jar test-objects-4.16.
