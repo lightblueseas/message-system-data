@@ -74,7 +74,7 @@
 		<!-- EXTENSIONS LIB versions -->
 		<email-tails.version>4.15.0</email-tails.version>
 		<!-- EXTERNAL LIBRARIES versions -->
-		<commons-email.version>1.4</commons-email.version>
+		<commons-email.version>1.5</commons-email.version>
 		<subethasmtp.version>3.1.7</subethasmtp.version>
 		<!-- velocity-extensions version -->
 		<velocity-extensions.version>1.0.0</velocity-extensions.version>
